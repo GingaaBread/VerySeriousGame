@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEngine;
 using VContainer;
@@ -11,12 +13,17 @@ namespace Main.Service
     public sealed class BatteryService : IStartable, IDisposable
     {
         private const int MAX_BATTERY_INCREMENT = 25;
+        private const int DRAIN_INTERVAL_SECONDS = 3;
+
         private readonly BatteryStatus _batteryStatus = new();
         [Inject] private readonly DrillService _drillService;
+
+        private CancellationTokenSource _drainCts;
 
         public void Dispose()
         {
             _drillService.OnActivationChange -= UpdateBatteryDrain;
+            StopDraining();
         }
 
         public void Start()
@@ -26,7 +33,43 @@ namespace Main.Service
 
         private void UpdateBatteryDrain(bool drillIsActive)
         {
-            throw new NotImplementedException();
+            if (drillIsActive) StartDraining();
+            else StopDraining();
+        }
+
+        private void StartDraining()
+        {
+            if (_drainCts != null) return;
+
+            _drainCts = new();
+            DrainLoop(_drainCts.Token).Forget();
+        }
+
+        private void StopDraining()
+        {
+            if (_drainCts == null) return;
+
+            _drainCts.Cancel();
+            _drainCts.Dispose();
+            _drainCts = null;
+        }
+
+        private async UniTaskVoid DrainLoop(CancellationToken token)
+        {
+            while (!token.IsCancellationRequested)
+            {
+                await UniTask.Delay(TimeSpan.FromSeconds(DRAIN_INTERVAL_SECONDS), cancellationToken: token)
+                    .SuppressCancellationThrow();
+
+                if (token.IsCancellationRequested) break;
+
+                DrainBattery();
+
+                if (!BatteryIsEmpty()) continue;
+
+                StopDraining();
+                break;
+            }
         }
 
         public void IncreaseMaxBattery()
