@@ -1,4 +1,7 @@
-﻿using VContainer;
+﻿using Main.Mono.Collected_Items;
+using Main.Service;
+using UnityEngine;
+using VContainer;
 using VContainer.Unity;
 
 namespace Utility
@@ -6,26 +9,16 @@ namespace Utility
     public class GameLifetimeScope : LifetimeScope
     {
         protected override void Configure(IContainerBuilder builder)
-        {/*
-            // Games
-            builder.Register<IMinigameEvaluator, SimulatedMinigameEvaluator>(Lifetime.Singleton);
-            builder.Register<MinigameSelectionService>(Lifetime.Singleton);
+        {
+            builder.Register<PlayerStatService>(Lifetime.Singleton);
 
-            // Lifecycle
-            builder.Register<LifecycleService>(Lifetime.Singleton);
-            builder.Register<MinigamePhaseService>(Lifetime.Singleton);
-            builder.Register<MovementPhaseService>(Lifetime.Singleton);
-            builder.Register<RoundService>(Lifetime.Singleton);
-
-            // Player
-            builder.Register<PlayerCreationService>(Lifetime.Singleton);
-
-            // Board
-            builder.Register<BoardService>(Lifetime.Singleton);
-            builder.Register<MovementService>(Lifetime.Singleton);
-
-            // Other
-            builder.RegisterEntryPoint<InitialisationService>();*/
+            builder.RegisterBuildCallback(resolver =>
+            {
+                foreach (var collectable in FindObjectsByType<Collectable>(FindObjectsSortMode.None))
+                {
+                    resolver.Inject(collectable);
+                }
+            });
         }
     }
 }
