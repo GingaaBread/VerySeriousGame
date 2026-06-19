@@ -9,7 +9,7 @@ namespace Main.Editor
 {
     public static class TestingTools
     {
-        [MenuItem("Tools/Testing/Improve Mining Strength %#1")]
+        [MenuItem("Testing/Stats/Improve Mining Strength %#1")]
         private static void ImproveMiningStrength()
         {
             var service = ResolveService<PlayerStatService>();
@@ -17,7 +17,7 @@ namespace Main.Editor
             service?.ImproveMiningStrength();
         }
 
-        [MenuItem("Tools/Testing/Improve Mining Burst Interval %#2")]
+        [MenuItem("Testing/Stats/Improve Mining Burst Interval %#2")]
         private static void ImproveMiningBurstInterval()
         {
             var service = ResolveService<PlayerStatService>();
@@ -25,7 +25,7 @@ namespace Main.Editor
             service?.ImproveMiningBurstInterval();
         }
 
-        [MenuItem("Tools/Testing/Increase Inventory Limit")]
+        [MenuItem("Testing/Inventory/Increase Inventory Limit")]
         private static void IncreaseInventoryLimit()
         {
             var service = ResolveService<PlayerInventoryService>();
@@ -33,8 +33,25 @@ namespace Main.Editor
             service?.IncrementCarryLimit();
         }
 
-        [MenuItem("Tools/Testing/Improve Mining Strength %#1", true)]
-        [MenuItem("Tools/Testing/Improve Mining Burst Speed %#2", true)]
+        [MenuItem("Testing/Battery/Increase Max Battery")]
+        private static void IncreaseMaxBattery()
+        {
+            var service = ResolveService<BatteryService>();
+
+            service?.IncreaseMaxBattery();
+        }
+
+
+        [MenuItem("Testing/Battery/Recharge Battery")]
+        private static void RechargeBattery()
+        {
+            var service = ResolveService<BatteryService>();
+
+            service?.RechargeCompletely();
+        }
+
+        [MenuItem("Testing/Testing/Improve Mining Strength %#1", true)]
+        [MenuItem("Testing/Testing/Improve Mining Burst Speed %#2", true)]
         private static bool ValidateRequiresPlayMode() => Application.isPlaying;
 
         private static T ResolveService<T>()

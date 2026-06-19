@@ -10,8 +10,8 @@ namespace Main.Mono.Collected_Items
     {
         [SerializeField] private float _sturdiness = 50;
         [SerializeField] private ItemSo _itemYield;
+        [Inject] private readonly DrillService _drillService;
         [Inject] private readonly PlayerInventoryService _playerInventoryService;
-
         [Inject] private readonly PlayerStatService _playerStatService;
 
         private float _currentSturdiness;
@@ -43,6 +43,13 @@ namespace Main.Mono.Collected_Items
         {
             while (_currentSturdiness > 0)
             {
+                if (!_drillService.IsActivated())
+                {
+                    Debug.Log("Cannot mine because the drill is not active :)");
+                    yield return new WaitForSeconds(_playerStatService.CurrentMiningBurstInterval());
+                    continue;
+                }
+
                 if (_playerInventoryService.InventoryIsFull())
                 {
                     Debug.Log("Cannot mine because the inventory is full :)");

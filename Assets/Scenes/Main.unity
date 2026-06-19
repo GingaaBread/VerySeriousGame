@@ -472,7 +472,8 @@ MonoBehaviour:
   parentReference:
     TypeName: 
   autoRun: 1
-  autoInjectGameObjects: []
+  autoInjectGameObjects:
+  - {fileID: 4771010710260565689}
 --- !u!1001 &987784888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -976,6 +977,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+--- !u!1 &4771010710260565689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 521056847852001743, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+  m_PrefabInstance: {fileID: 4771010710260565688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7122900801860538700
 PrefabInstance:
   m_ObjectHideFlags: 0
