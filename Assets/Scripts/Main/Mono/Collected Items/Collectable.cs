@@ -10,6 +10,7 @@ namespace Main.Mono.Collected_Items
     {
         [SerializeField] private float _sturdiness = 50;
         [SerializeField] private ItemSo _itemYield;
+        [Inject] private readonly PlayerInventoryService _playerInventoryService;
 
         [Inject] private readonly PlayerStatService _playerStatService;
 
@@ -42,11 +43,18 @@ namespace Main.Mono.Collected_Items
         {
             while (_currentSturdiness > 0)
             {
+                if (_playerInventoryService.InventoryIsFull())
+                {
+                    Debug.Log("Cannot mine because the inventory is full :)");
+                    yield break;
+                }
+
                 yield return new WaitForSeconds(_playerStatService.CurrentMiningBurstInterval());
 
                 _currentSturdiness -= _playerStatService.CurrentMiningStrength();
 
                 if (_currentSturdiness > 0) continue;
+
 
                 Collect();
                 yield break;
@@ -55,8 +63,9 @@ namespace Main.Mono.Collected_Items
 
         private void Collect()
         {
-            Debug.Log($"Collected {name}");
-            Destroy(gameObject);
+            Debug.Log($"Destroyed {name}. Now collecting the item yield.");
+            _playerInventoryService.Collect(_itemYield);
+            gameObject.SetActive(false);
         }
     }
 }

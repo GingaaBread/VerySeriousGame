@@ -11,6 +11,7 @@ namespace Utility
         protected override void Configure(IContainerBuilder builder)
         {
             builder.Register<PlayerStatService>(Lifetime.Singleton);
+            builder.Register<PlayerInventoryService>(Lifetime.Singleton);
 
             builder.RegisterBuildCallback(resolver =>
             {
