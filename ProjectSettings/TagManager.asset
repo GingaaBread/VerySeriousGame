@@ -41,11 +41,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tunnel
+    uniqueID: 2633843021
+    locked: 0
   - name: Item
     uniqueID: 3399418279
     locked: 0
   - name: Player
     uniqueID: 3478986083
+    locked: 0
+  - name: VFX
+    uniqueID: 3265973825
     locked: 0
   m_RenderingLayers:
   - Default

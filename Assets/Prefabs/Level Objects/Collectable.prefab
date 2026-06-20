@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 1502633949250270640}
   - component: {fileID: 4328111464405860217}
   - component: {fileID: 8223857210592889644}
+  - component: {fileID: 8583085027605072381}
+  - component: {fileID: 3003210407945384548}
+  - component: {fileID: 6611045647902303370}
   m_Layer: 0
   m_Name: Collectable
   m_TagString: Untagged
@@ -57,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,10 +79,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -895549017
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.9528302, g: 0.7177071, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d290f6c9f3fced2408e64cb57373a876, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -139,3 +142,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sturdiness: 3
   _itemYield: {fileID: 11400000, guid: fd1e881ec7edfa748ae194d27dbbd411, type: 2}
+  _onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3003210407945384548}
+        m_TargetAssemblyTypeName: Utility.Polish.HitFlash, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6611045647902303370}
+        m_TargetAssemblyTypeName: Utility.Polish.TimeChange, Assembly-CSharp
+        m_MethodName: ApplyChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8583085027605072381}
+        m_TargetAssemblyTypeName: Utility.Polish.HitSlash, Assembly-CSharp
+        m_MethodName: Slash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8583085027605072381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141789349258869047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1583cab7c5449d346917eda6895cac5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3003210407945384548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141789349258869047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41b911c434407a49aaadd5ab02a7450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flashTimeInSeconds: 0.08
+--- !u!114 &6611045647902303370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141789349258869047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c933dfec6fc114db4e4b28321b4276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _newTimeInSeconds: 0.05
+  _changeLastingTimeInSeconds: 0.08

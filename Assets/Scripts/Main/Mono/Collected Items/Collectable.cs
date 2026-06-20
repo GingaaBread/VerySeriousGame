@@ -2,6 +2,7 @@ using System.Collections;
 using Main.Entity;
 using Main.Service;
 using UnityEngine;
+using UnityEngine.Events;
 using VContainer;
 
 namespace Main.Mono.Collected_Items
@@ -10,6 +11,8 @@ namespace Main.Mono.Collected_Items
     {
         [SerializeField] private float _sturdiness = 50;
         [SerializeField] private ItemSo _itemYield;
+
+        [SerializeField] private UnityEvent _onHit;
         [Inject] private readonly DrillService _drillService;
         [Inject] private readonly PlayerInventoryService _playerInventoryService;
         [Inject] private readonly PlayerStatService _playerStatService;
@@ -57,15 +60,19 @@ namespace Main.Mono.Collected_Items
                 }
 
                 yield return new WaitForSeconds(_playerStatService.CurrentMiningBurstInterval());
-
-                _currentSturdiness -= _playerStatService.CurrentMiningStrength();
+                Hit();
 
                 if (_currentSturdiness > 0) continue;
-
 
                 Collect();
                 yield break;
             }
+        }
+
+        private void Hit()
+        {
+            _currentSturdiness -= _playerStatService.CurrentMiningStrength();
+            _onHit?.Invoke();
         }
 
         private void Collect()
