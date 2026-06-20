@@ -50,6 +50,13 @@ namespace Main.Editor
             service?.RechargeCompletely();
         }
 
+        [MenuItem("Testing/Battery/Increase Battery Depletion Interval")]
+        private static void IncreaseBatteryDepletionInterval()
+        {
+            var service = ResolveService<BatteryService>();
+            service?.IncreaseBatteryDepletionInterval();
+        }
+
         [MenuItem("Testing/Testing/Improve Mining Strength %#1", true)]
         [MenuItem("Testing/Testing/Improve Mining Burst Speed %#2", true)]
         private static bool ValidateRequiresPlayMode() => Application.isPlaying;

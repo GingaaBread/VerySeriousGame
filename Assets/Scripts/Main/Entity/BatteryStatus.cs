@@ -2,7 +2,8 @@
 {
     public class BatteryStatus
     {
-        public int CurrentBatteryLevel { get; set; } = 100;
-        public int CurrentMaxBatteryLevel { get; set; } = 100;
+        public int CurrentBatteryLevel { get; set; } = 10;
+        public int CurrentMaxBatteryLevel { get; set; } = 10;
+        public int CurrentDepletionInterval { get; set; } = 3;
     }
 }

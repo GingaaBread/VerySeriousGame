@@ -12,8 +12,9 @@ namespace Utility
         {
             builder.Register<PlayerStatService>(Lifetime.Singleton);
             builder.Register<PlayerInventoryService>(Lifetime.Singleton);
-            builder.Register<BatteryService>(Lifetime.Singleton);
-            builder.Register<DrillService>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<BatteryService>().AsSelf();
+            builder.RegisterEntryPoint<DrillService>().AsSelf();
+            builder.Register<DrillActivationMediator>(Lifetime.Singleton);
 
             builder.RegisterBuildCallback(resolver =>
             {
