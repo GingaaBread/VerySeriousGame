@@ -485,11 +485,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2482737858089737691, guid: 4dbbc06f5aa21264fa38ed55b50a91f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.07
+      value: 5.52
       objectReference: {fileID: 0}
     - target: {fileID: 2482737858089737691, guid: 4dbbc06f5aa21264fa38ed55b50a91f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.53
+      value: 1.68
       objectReference: {fileID: 0}
     - target: {fileID: 2482737858089737691, guid: 4dbbc06f5aa21264fa38ed55b50a91f7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -728,11 +728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3419949606581087474, guid: 041859be401228c4fb82ef6365e4d04a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.07
+      value: 5.52
       objectReference: {fileID: 0}
     - target: {fileID: 3419949606581087474, guid: 041859be401228c4fb82ef6365e4d04a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.53
+      value: 1.68
       objectReference: {fileID: 0}
     - target: {fileID: 3419949606581087474, guid: 041859be401228c4fb82ef6365e4d04a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -766,6 +766,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4580604710986425514, guid: 041859be401228c4fb82ef6365e4d04a, type: 3}
+      propertyPath: Target.TrackingTarget
+      value: 
+      objectReference: {fileID: 1538315080}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -896,6 +900,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1366415046}
   m_CullTransparentMesh: 1
+--- !u!4 &1538315080 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2623671999916419707, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+  m_PrefabInstance: {fileID: 4771010710260565688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1785721903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6814243211623982220, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
