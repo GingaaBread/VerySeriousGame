@@ -14,6 +14,7 @@ namespace Main.Mono.Collected_Items
         [SerializeField] private ItemSo _itemYield;
 
         [SerializeField] private UnityEvent _onHit;
+        [SerializeField] private UnityEvent _onDestruction;
         [Inject] private readonly DrillService _drillService;
         [Inject] private readonly PlayerInventoryService _playerInventoryService;
         [Inject] private readonly PlayerStatService _playerStatService;
@@ -85,7 +86,7 @@ namespace Main.Mono.Collected_Items
             Debug.Log($"Destroyed {name}. Now collecting the item yield.");
             _playerInventoryService.Collect(_itemYield);
             IndicatorManager.Instance.RequireAt("BAM!", transform.position + Vector3.up * 3);
-            gameObject.SetActive(false);
+            _onDestruction?.Invoke();
         }
     }
 }
