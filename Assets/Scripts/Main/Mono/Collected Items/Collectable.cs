@@ -3,6 +3,7 @@ using Main.Entity;
 using Main.Service;
 using UnityEngine;
 using UnityEngine.Events;
+using Utility.Polish;
 using VContainer;
 
 namespace Main.Mono.Collected_Items
@@ -46,20 +47,22 @@ namespace Main.Mono.Collected_Items
         {
             while (_currentSturdiness > 0)
             {
+                yield return new WaitForSeconds(_playerStatService.CurrentMiningBurstInterval());
+
                 if (!_drillService.IsActivated())
                 {
                     Debug.Log("Cannot mine because the drill is not active :)");
-                    yield return new WaitForSeconds(_playerStatService.CurrentMiningBurstInterval());
                     continue;
                 }
 
                 if (_playerInventoryService.InventoryIsFull())
                 {
                     Debug.Log("Cannot mine because the inventory is full :)");
+                    // its okay to break here because the inventory cannot be emptied from within the radius
                     yield break;
                 }
 
-                yield return new WaitForSeconds(_playerStatService.CurrentMiningBurstInterval());
+
                 Hit();
 
                 if (_currentSturdiness > 0) continue;
@@ -71,7 +74,9 @@ namespace Main.Mono.Collected_Items
 
         private void Hit()
         {
-            _currentSturdiness -= _playerStatService.CurrentMiningStrength();
+            var damage = _playerStatService.CurrentMiningStrength();
+            _currentSturdiness -= damage;
+            IndicatorManager.Instance.RequireAt(damage + string.Empty, transform.position + Vector3.up * 3);
             _onHit?.Invoke();
         }
 
@@ -79,6 +84,7 @@ namespace Main.Mono.Collected_Items
         {
             Debug.Log($"Destroyed {name}. Now collecting the item yield.");
             _playerInventoryService.Collect(_itemYield);
+            IndicatorManager.Instance.RequireAt("BAM!", transform.position + Vector3.up * 3);
             gameObject.SetActive(false);
         }
     }
