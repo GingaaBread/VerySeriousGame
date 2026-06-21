@@ -41,7 +41,9 @@ namespace Main.Service
 
         private void StopActivation()
         {
+            Debug.Log("Stopping activation");
             _drillStatus.IsActivated = false;
+            _drillActivationMediator.RaiseActivationChange(false);
         }
     }
 }

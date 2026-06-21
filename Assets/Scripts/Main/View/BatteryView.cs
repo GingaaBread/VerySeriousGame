@@ -1,13 +1,16 @@
 using Main.Service;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using VContainer;
 
 namespace Main.View
 {
     public class BatteryView : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _amountText;
+        [Required] [SerializeField] private TMP_Text _amountText;
+        [Required] [SerializeField] private Image _batterFillImage;
         [Inject] private readonly BatteryService _batteryService;
 
         private void OnEnable()
@@ -25,6 +28,7 @@ namespace Main.View
         private void Render(int current, int max)
         {
             _amountText.text = current + "/" + max;
+            _batterFillImage.fillAmount = (float)current / max;
         }
     }
 }
