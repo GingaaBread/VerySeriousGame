@@ -2,6 +2,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Random = UnityEngine.Random;
 
 namespace Utility.Polish
 {

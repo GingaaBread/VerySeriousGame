@@ -15,6 +15,7 @@ namespace Utility
             builder.RegisterEntryPoint<BatteryService>().AsSelf();
             builder.RegisterEntryPoint<DrillService>().AsSelf();
             builder.Register<DrillActivationMediator>(Lifetime.Singleton);
+            builder.Register<InteractionService>(Lifetime.Singleton);
 
             builder.RegisterBuildCallback(resolver =>
             {

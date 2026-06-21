@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using Main.Entity;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace Main.Service
     public sealed class PlayerInventoryService
     {
         private readonly PlayerInventory _playerInventory = new();
+
+        public event Action<ItemSo> OnItemCollected;
 
         public void IncrementCarryLimit()
         {
@@ -23,6 +26,7 @@ namespace Main.Service
             if (!_playerInventory.ItemsInInventory.TryAdd(item, 1)) _playerInventory.ItemsInInventory[item]++;
             _playerInventory.CurrentInventorySize++;
 
+            OnItemCollected?.Invoke(item);
             Debug.Log($"Collected 1x {item.ItemName}");
         }
 

@@ -12,6 +12,7 @@ namespace Main.Mono.Player
         private static readonly int IS_DRILLING_ID = Animator.StringToHash("Is Drilling");
         [SerializeField] private float _defaultMovementSpeed = 5f;
         [SerializeField] private bool _isAllowedToMoveUp;
+        [SerializeField] private bool _isAllowedToMoveDown = true;
         [SerializeField] private Animator _animator;
 
         [Inject] private readonly DrillActivationMediator _drillActivationMediator;
@@ -64,6 +65,7 @@ namespace Main.Mono.Player
             var direction = ctx.ReadValue<Vector2>().normalized;
 
             if (!_isAllowedToMoveUp) direction.y = Mathf.Min(0f, direction.y);
+            if (!_isAllowedToMoveDown) direction.y = Mathf.Max(0f, direction.y);
 
             _currentMovementData = direction;
         }
