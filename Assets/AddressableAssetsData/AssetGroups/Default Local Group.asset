@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: d9f94a62e192e954e97db5dcf92a46d5
   m_SerializeEntries:
+  - m_GUID: 2e0031bd81a94474cb9563cee657a133
+    m_Address: spawned-essentials
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 869be144722eea54196c15cb24156f51
     m_Address: Assets/AddressableAssets/Transitions/transition.mine_to_surface.asset
     m_ReadOnly: 0

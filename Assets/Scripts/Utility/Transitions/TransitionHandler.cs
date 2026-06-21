@@ -40,7 +40,7 @@ namespace Utility.Transitions
                         .setOnStart(() => events.OnRevealStart?.Invoke())
                         .setOnComplete(() =>
                         {
-                            events.OnCoverStart?.Invoke();
+                            events.OnComplete?.Invoke();
                             _notifier?.Invoke();
                         });
                     break;

@@ -1,19 +1,13 @@
 ﻿using Main.Service;
-using UnityEngine;
 using UnityEngine.InputSystem;
 using Utility;
 using VContainer;
 
 namespace Main.Controller
 {
-    public class DrillController : MonoBehaviour
+    public class DrillController : Controller
     {
         [Inject] private readonly DrillService _drillService;
-
-        private void OnEnable()
-        {
-            InputManager.Instance.InputMaster.Player.ToggleDrill.performed += TryToggleDrill;
-        }
 
         private void OnDisable()
         {
@@ -23,6 +17,11 @@ namespace Main.Controller
         private void TryToggleDrill(InputAction.CallbackContext _)
         {
             _drillService.ToggleActivity();
+        }
+
+        protected override void Subscribe()
+        {
+            InputManager.Instance.InputMaster.Player.ToggleDrill.performed += TryToggleDrill;
         }
     }
 }

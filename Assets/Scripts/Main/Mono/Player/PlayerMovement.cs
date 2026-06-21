@@ -17,6 +17,7 @@ namespace Main.Mono.Player
 
         [Inject] private readonly DrillActivationMediator _drillActivationMediator;
         private Vector2 _currentMovementData;
+        private int _frozenTickets;
         private Rigidbody2D _rigidbody2D;
 
         private bool _wasMoving;
@@ -55,6 +56,19 @@ namespace Main.Mono.Player
             _drillActivationMediator.OnActivationChange -= UpdateDrillAnimator;
         }
 
+        public void Freeze()
+        {
+            StopMoving();
+            _frozenTickets++;
+        }
+
+        public void Unfreeze()
+        {
+            _frozenTickets = Mathf.Max(0, _frozenTickets - 1);
+        }
+
+        private bool IsFrozen() => _frozenTickets > 0;
+
         private void UpdateDrillAnimator(bool isDrilling)
         {
             _animator.SetBool(IS_DRILLING_ID, isDrilling);
@@ -62,6 +76,8 @@ namespace Main.Mono.Player
 
         public void TryMove(InputAction.CallbackContext ctx)
         {
+            if (IsFrozen()) return;
+
             var direction = ctx.ReadValue<Vector2>().normalized;
 
             if (!_isAllowedToMoveUp) direction.y = Mathf.Min(0f, direction.y);

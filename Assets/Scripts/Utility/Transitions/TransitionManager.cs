@@ -9,7 +9,6 @@ namespace Utility.Transitions
     public class TransitionManager : MonoBehaviour
     {
         [SerializeField] private TransitionHandler _handler;
-        [SerializeField] private bool _dontDestroyOnLoad;
 
         private (Transition, TransitionEmitter.EmitterEvents) _current;
 
@@ -23,7 +22,6 @@ namespace Utility.Transitions
         {
             Assert.IsNull(Instance, "TransitionManager singleton already exists");
             Instance = this;
-            if (_dontDestroyOnLoad) DontDestroyOnLoad(gameObject);
         }
 
         public void Register(IEnumerable<Transition> transitions)

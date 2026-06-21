@@ -15,8 +15,7 @@ namespace Main.Service
 
         public void Trigger(int index)
         {
-            if (index < 0 || index >= _availableInteractions.Count)
-                Debug.LogError("Cannot trigger an out of bounds interaction");
+            if (index < 0 || index >= _availableInteractions.Count) return;
 
             var interaction = _availableInteractions[index];
             interaction.OnInteractionTriggered?.Invoke();
