@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{2966792b-1188-482c-ac4e-6c6ee61565f0}">
 		<property name="name">
-			<value>Drill_Hit</value>
+			<value>Drill_On</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -234,7 +234,10 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{433c6058-9131-45bb-89da-0beb31876ec4}">
 		<relationship name="effects">
+			<destination>{b87b6444-8a14-4c79-807f-c1cb52d5d1ef}</destination>
 			<destination>{3d37d810-4c24-47fe-a236-41065d9b73da}</destination>
+			<destination>{ba69f703-e28b-4246-bd9a-97702ef22ed5}</destination>
+			<destination>{f71451bd-3978-436b-9bf4-3fc14be30785}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{15f2f6df-3e21-4aa2-a6b7-44432522ff3a}" />
@@ -299,5 +302,23 @@
 			<value>1</value>
 		</property>
 	</object>
+	<object class="FlangerEffect" id="{b87b6444-8a14-4c79-807f-c1cb52d5d1ef}">
+		<property name="mix">
+			<value>10</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{3d37d810-4c24-47fe-a236-41065d9b73da}" />
+	<object class="SFXReverbEffect" id="{ba69f703-e28b-4246-bd9a-97702ef22ed5}">
+		<property name="wetLevel">
+			<value>-19.5</value>
+		</property>
+	</object>
+	<object class="DelayEffect" id="{f71451bd-3978-436b-9bf4-3fc14be30785}">
+		<property name="delay">
+			<value>28</value>
+		</property>
+		<property name="level">
+			<value>-25</value>
+		</property>
+	</object>
 </objects>

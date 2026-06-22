@@ -8264,6 +8264,7 @@ MonoBehaviour:
   - {fileID: 4771010710260565689}
   - {fileID: 1159840884}
   - {fileID: 1317687478}
+  - {fileID: 1016004154}
 --- !u!1001 &987784888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8318,7 +8319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4576459596501855870, guid: 4dbbc06f5aa21264fa38ed55b50a91f7, type: 3}
       propertyPath: orthographic size
-      value: 11.25
+      value: 9.515625
       objectReference: {fileID: 0}
     - target: {fileID: 4576459596501855870, guid: 4dbbc06f5aa21264fa38ed55b50a91f7, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -8428,6 +8429,68 @@ SpriteRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6814243211623982220, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
   m_PrefabInstance: {fileID: 8180746341976050167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1016004153
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 648165755764619189, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_Name
+      value: DrillAudioController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725946738245748743, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+--- !u!1 &1016004154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 648165755764619189, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
+  m_PrefabInstance: {fileID: 1016004153}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1048974213
 GameObject:
@@ -14360,3 +14423,4 @@ SceneRoots:
   - {fileID: 200478744}
   - {fileID: 263896027}
   - {fileID: 1768296636}
+  - {fileID: 1016004153}

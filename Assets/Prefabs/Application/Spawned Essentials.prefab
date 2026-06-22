@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _autoInjectGameObjects:
   - {fileID: 4131215226085426943}
+  - {fileID: 956704079097570021, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
+  - {fileID: 648165755764619189, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
 --- !u!1001 &1557590433494008445
 PrefabInstance:
   m_ObjectHideFlags: 0
