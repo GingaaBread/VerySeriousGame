@@ -7,6 +7,9 @@ public class AudioRegistry : MonoBehaviour
 
     [Header("Music")]
     public EventReference musicTest;
+    
+    [Header("SFX")]
+    public EventReference drillDrilling;
 
     private void Awake()
     {

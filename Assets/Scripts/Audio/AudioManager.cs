@@ -53,11 +53,6 @@ namespace Audio
             if (_ambienceBus.isValid()) _ambienceBus.setVolume(ambienceVolume);
         }
 
-        private void OnDestroy()
-        {
-            StopMusic();
-        }
-
         //Plays any FMOD music event globally, automatically stopping and cleaning up the previous track.
         public void PlayMusic(EventReference musicEvent)
         {
@@ -92,6 +87,19 @@ namespace Audio
         public void PlayOneShot3D(EventReference oneShotEvent, Vector3 worldPosition)
         {
             if (!oneShotEvent.IsNull) RuntimeManager.PlayOneShot(oneShotEvent, worldPosition);
+        }
+        
+        public EventInstance PlayLoop(EventReference loopEvent)
+        {
+            EventInstance instance = RuntimeManager.CreateInstance(loopEvent);
+            instance.start();
+            instance.release();
+            return instance;
+        }
+        
+        private void OnDestroy()
+        {
+            StopMusic();
         }
     }
 }
