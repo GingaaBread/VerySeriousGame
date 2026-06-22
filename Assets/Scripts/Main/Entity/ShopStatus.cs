@@ -3,6 +3,5 @@
     public class ShopStatus
     {
         public ItemSo[] SoldStock { get; set; }
-        public 
     }
 }

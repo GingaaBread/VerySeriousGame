@@ -30,15 +30,13 @@ namespace Main.Service
 
         private void Register(IEnumerable<UpgradeSo> upgrades)
         {
-            var test = upgrades.ToList();
-            Debug.Log($"Trying to register {test.Count()} upgrades");
             if (_upgradeStatus.UpgradePool.Count is not 0)
             {
                 Debug.LogWarning("Should not register upgrades because some have already been registered before");
                 return;
             }
 
-            _upgradeStatus.UpgradePool = test.ToList();
+            _upgradeStatus.UpgradePool = upgrades.ToList();
         }
 
         public UpgradeSo[] GetAll()
