@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: d9f94a62e192e954e97db5dcf92a46d5
   m_SerializeEntries:
+  - m_GUID: 2bbfda6ccb986cb4a9813909b21d5ca0
+    m_Address: Assets/AddressableAssets/Upgrades/upgrade.test.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - upgrade
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2e0031bd81a94474cb9563cee657a133
     m_Address: spawned-essentials
     m_ReadOnly: 0

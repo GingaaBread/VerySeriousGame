@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Gold
-  <ItemSprite>k__BackingField: {fileID: 21300000, guid: 1bf776dfce204796b250ac91696f56a0, type: 3}
+  <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4ee9b73dd177bc3498127ce3ef865016, type: 3}

@@ -16,13 +16,12 @@ namespace Utility
             builder.RegisterEntryPoint<DrillService>().AsSelf();
             builder.Register<DrillActivationMediator>(Lifetime.Singleton);
             builder.Register<InteractionService>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<UpgradeService>().AsSelf();
 
             builder.RegisterBuildCallback(resolver =>
             {
                 foreach (var collectable in FindObjectsByType<Collectable>(FindObjectsSortMode.None))
-                {
                     resolver.Inject(collectable);
-                }
             });
         }
     }
