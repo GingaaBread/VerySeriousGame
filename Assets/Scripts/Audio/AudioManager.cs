@@ -39,8 +39,8 @@ namespace Audio
 
         private void Start()
         {
-            if (AudioRegistry.Events != null && !AudioRegistry.Events.musicTest.IsNull)
-                PlayMusic(AudioRegistry.Events.musicTest);
+            if (AudioRegistry.Events != null && !AudioRegistry.Events.MusicTest.IsNull)
+                PlayMusic(AudioRegistry.Events.MusicTest);
             else
                 Debug.LogWarning("AudioManager: Could not find an In Game Theme event in the AudioRegistry!");
         }
