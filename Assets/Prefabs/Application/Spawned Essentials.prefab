@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6023316956666804750, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
+      propertyPath: drillHit.Path
+      value: event:/SFX/Drill/Drill_Hit_Dirt
+      objectReference: {fileID: 0}
     - target: {fileID: 6451735092116011861, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

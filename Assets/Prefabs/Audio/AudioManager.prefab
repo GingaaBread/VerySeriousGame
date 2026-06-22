@@ -107,10 +107,24 @@ MonoBehaviour:
       Data3: 1852591788
       Data4: -261810714
     Path: event:/SFX/Drill/Drill_On
-  drillHit:
+  drillHitDirt:
     Guid:
       Data1: 117736884
       Data2: 1103021320
       Data3: 618192772
       Data4: -1304715096
-    Path: event:/SFX/Drill/Drill_Hit
+    Path: event:/SFX/Drill/Drill_Hit_Dirt
+  drillHitResource:
+    Guid:
+      Data1: 1593796236
+      Data2: 1073883533
+      Data3: -202792562
+      Data4: -549533421
+    Path: event:/SFX/Drill/Drill_Hit_Resource
+  drillDestroyResource:
+    Guid:
+      Data1: -642675954
+      Data2: 1338680385
+      Data3: -1296683841
+      Data4: -180000268
+    Path: event:/SFX/Drill/Drill_Destroy_Resource

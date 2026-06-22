@@ -10,7 +10,9 @@ public class AudioRegistry : MonoBehaviour
     
     [Header("SFX")]
     public EventReference drillDrilling;
-    public EventReference drillHit;
+    public EventReference drillHitDirt;
+    public EventReference drillHitResource;
+    public EventReference drillDestroyResource;
 
     private void Awake()
     {

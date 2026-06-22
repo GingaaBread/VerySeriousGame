@@ -99,6 +99,8 @@ namespace Main.Mono.Collected_Items
         {
             var damage = _playerStatService.CurrentMiningStrength();
             _currentSturdiness -= damage;
+            
+            Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.drillHitResource);
 
             IndicatorManager.Instance.RequireAt(damage + string.Empty, transform.position + Vector3.up * 3);
             _healthBar.UpdatePercentage(GetCurrentPercentage());
