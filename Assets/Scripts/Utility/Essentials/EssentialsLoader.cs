@@ -21,7 +21,6 @@ namespace Utility.Essentials
 
             foreach (var i in injected)
             {
-                Debug.Log("OKOKO");
                 _resolver.InjectGameObject(i);
             }
 

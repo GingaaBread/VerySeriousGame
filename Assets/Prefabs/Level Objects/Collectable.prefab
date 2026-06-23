@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sturdiness: 3
-  _itemYield: {fileID: 11400000, guid: fd1e881ec7edfa748ae194d27dbbd411, type: 2}
+  _itemYield: {fileID: 11400000, guid: 771553ae425a5b7469f3a2dfbd926f2c, type: 2}
   _onHit:
     m_PersistentCalls:
       m_Calls:

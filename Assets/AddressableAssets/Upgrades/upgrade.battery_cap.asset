@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: upgrade.battery_cap
   m_EditorClassIdentifier: 
   <UpgradeName>k__BackingField: AA Upgrade
-  <Description>k__BackingField: Increase your battery size.
+  <Description>k__BackingField: Increases the size of your battery, allowing you
+    to drill longer.
   <Icon>k__BackingField: {fileID: 21300000, guid: 04eb2f0114e94af46bcec7f3eeb7304d, type: 3}
   <Cost>k__BackingField:
     _serializedList:

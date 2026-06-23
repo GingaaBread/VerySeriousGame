@@ -40,6 +40,17 @@ namespace Main.Service
             }
         }
 
+        public int MaximumOfRequired(ItemSo item, int required)
+        {
+            if (required >= 0)
+                return !_playerInventory.ItemsInInventory.ContainsKey(item)
+                    ? 0
+                    : Mathf.Min(required, _playerInventory.ItemsInInventory[item]);
+
+            Debug.LogError("Can only require positive amounts");
+            return -1;
+        }
+
         public bool CanRemove(Dictionary<ItemSo, int> items)
         {
             foreach (var (item, amount) in items)

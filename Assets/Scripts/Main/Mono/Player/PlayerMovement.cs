@@ -10,6 +10,7 @@ namespace Main.Mono.Player
     {
         private static readonly int IS_MOVING_ID = Animator.StringToHash("Is Walking");
         private static readonly int IS_DRILLING_ID = Animator.StringToHash("Is Drilling");
+        private static readonly int DIRECTION_ID = Animator.StringToHash("Direction");
         [SerializeField] private float _defaultMovementSpeed = 5f;
         [SerializeField] private bool _isAllowedToMoveUp;
         [SerializeField] private bool _isAllowedToMoveDown = true;
@@ -18,8 +19,8 @@ namespace Main.Mono.Player
         [Inject] private readonly DrillActivationMediator _drillActivationMediator;
         private Vector2 _currentMovementData;
         private int _frozenTickets;
+        private bool _lastDirection;
         private Rigidbody2D _rigidbody2D;
-
         private bool _wasMoving;
 
         private void Awake()
@@ -79,6 +80,9 @@ namespace Main.Mono.Player
             if (IsFrozen()) return;
 
             var direction = ctx.ReadValue<Vector2>().normalized;
+
+            if (direction.x > 0f) _animator.SetFloat(DIRECTION_ID, 1f);
+            else if (direction.x < 0f) _animator.SetFloat(DIRECTION_ID, 0f);
 
             if (!_isAllowedToMoveUp) direction.y = Mathf.Min(0f, direction.y);
             if (!_isAllowedToMoveDown) direction.y = Mathf.Max(0f, direction.y);

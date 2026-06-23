@@ -19,21 +19,45 @@ namespace Main.View.Shop
         [Required] [SerializeField] private Transform _scrollViewContent;
         [Required] [SerializeField] private ShopDetailPage _shopDetailPage;
         [Required] [SerializeField] private GameObject _purchaseButton;
+        [Required] [SerializeField] private RequiredResourceView _requiredResourcePrefab;
+        [Required] [SerializeField] private Transform _requiredResourceTransform;
         [SerializeField] private UnityEvent _onClose;
+        private readonly List<RequiredResourceView> _detailResourceInstances = new();
 
-        private readonly List<ShopButton> _instances = new();
+
         [Inject] private readonly PlayerInventoryService _playerInventoryService;
+        private readonly List<ShopButton> _shopButtonInstances = new();
         [Inject] private readonly UpgradeService _upgradeService;
         private UpgradeSo _currentlySelected;
-
         private List<UpgradeSo> _upgrades;
 
         public void Select(UpgradeSo upgrade)
         {
             _currentlySelected = _upgrades.FirstOrDefault(e => e == upgrade);
+            _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
+            _detailResourceInstances.Clear();
+
             if (_currentlySelected == null) return;
 
-            _purchaseButton.SetActive(_playerInventoryService.CanRemove(upgrade.Cost));
+            if (_playerInventoryService.CanRemove(upgrade.Cost))
+            {
+                _purchaseButton.SetActive(true);
+            }
+            else
+            {
+                foreach (var (item, requiredAmount) in upgrade.Cost)
+                {
+                    var maxAvailable = _playerInventoryService.MaximumOfRequired(item, requiredAmount);
+                    if (maxAvailable >= requiredAmount) continue;
+
+                    var instance =
+                        LeanPool.Spawn(_requiredResourcePrefab, _requiredResourceTransform);
+                    instance.Render(item.ItemSprite, maxAvailable + "/" + requiredAmount, Color.red);
+                    _detailResourceInstances.Add(instance);
+                }
+
+                _purchaseButton.SetActive(false);
+            }
 
             _shopDetailPage.Render(upgrade);
         }
@@ -68,17 +92,16 @@ namespace Main.View.Shop
             foreach (var upgradeSo in _upgrades)
             {
                 var instance = LeanPool.Spawn(_shopButtonPrefab, _scrollViewContent);
-                _instances.Add(instance);
+                _shopButtonInstances.Add(instance);
                 instance.Render(this, upgradeSo, upgradeSo.Cost);
                 LayoutRebuilder.ForceRebuildLayoutImmediate(_scrollViewContent as RectTransform);
-                Debug.Log($"Rendering {upgradeSo.UpgradeName}");
             }
         }
 
         private void DespawnAll()
         {
-            _instances.ForEach(i => LeanPool.Despawn(i));
-            _instances.Clear();
+            _shopButtonInstances.ForEach(i => LeanPool.Despawn(i));
+            _shopButtonInstances.Clear();
         }
     }
 }

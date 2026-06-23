@@ -9,10 +9,11 @@ namespace Main.View.Shop
         [SerializeField] private Image _iconImage;
         [SerializeField] private TMP_Text _amountText;
 
-        public void Render(Sprite icon, int amount)
+        public void Render(Sprite icon, string amountText, Color color)
         {
             _iconImage.sprite = icon;
-            _amountText.text = string.Empty + amount;
+            _amountText.text = amountText;
+            _amountText.color = color;
             LayoutRebuilder.ForceRebuildLayoutImmediate(_amountText.rectTransform);
         }
     }
