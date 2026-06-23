@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6ee1c10ce043a3a3436318c4181eb3, type: 3}
+  m_Name: transition.surface_to_mine
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: transition.mine_to_surface
+  <Priority>k__BackingField: 1
+  <Policy>k__BackingField: 1
+  <DoNotInterrupt>k__BackingField: 0
+  <Labels>k__BackingField: []
+  <Cover>k__BackingField:
+    <Style>k__BackingField: {fileID: 11400000, guid: 64dd50e7fc7418547ad362d163831a91, type: 2}
+    <Ease>k__BackingField: 19
+    <DurationInSeconds>k__BackingField: 0.6
+  <HoldDurationInSeconds>k__BackingField: 1
+  <Reveal>k__BackingField:
+    <Style>k__BackingField: {fileID: 11400000, guid: 64dd50e7fc7418547ad362d163831a91, type: 2}
+    <Ease>k__BackingField: 28
+    <DurationInSeconds>k__BackingField: 0.6

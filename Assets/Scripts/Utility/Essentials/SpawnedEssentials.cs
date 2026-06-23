@@ -1,11 +1,10 @@
 using UnityEngine;
-using VContainer.Unity;
 
 namespace Utility.Essentials
 {
     public class SpawnedEssentials : MonoBehaviour
     {
-        [SerializeField] private GameObject[] _autoInjectGameObjects;
+        [field: SerializeField] public GameObject[] Injected { private set; get; }
 
         public static bool Exists { private set; get; }
 
@@ -15,15 +14,6 @@ namespace Utility.Essentials
 
             DontDestroyOnLoad(gameObject);
             Exists = true;
-
-            var scope = LifetimeScope.Find<GameLifetimeScope>();
-            foreach (var autoInjectGameObject in _autoInjectGameObjects)
-            {
-                foreach (var component in autoInjectGameObject.GetComponents<MonoBehaviour>())
-                {
-                    scope.Container.Inject(component);
-                }
-            }
         }
     }
 }

@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using Main.Entity;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using VContainer;
 using VContainer.Unity;
 
 namespace Main.Service
@@ -13,6 +14,7 @@ namespace Main.Service
     [UsedImplicitly]
     public sealed class UpgradeService : IAsyncStartable
     {
+        [Inject] private readonly PlayerInventoryService _playerInventoryService;
         private readonly UpgradeStatus _upgradeStatus = new();
 
         public async UniTask StartAsync(CancellationToken cancellation)
@@ -23,8 +25,15 @@ namespace Main.Service
 
         public void Purchase(UpgradeSo upgrade)
         {
+            if (!_playerInventoryService.CanRemove(upgrade.Cost))
+            {
+                Debug.Log("Ignoring the purchase request because the cost cannot be afforded");
+                return;
+            }
+
             if (!_upgradeStatus.PurchasedUpgrades.TryAdd(upgrade, 1)) _upgradeStatus.PurchasedUpgrades[upgrade]++;
 
+            _playerInventoryService.Remove(upgrade.Cost);
             Debug.Log($"Purchased upgrade '{upgrade}'");
         }
 
@@ -39,7 +48,7 @@ namespace Main.Service
             _upgradeStatus.UpgradePool = upgrades.ToList();
         }
 
-        public UpgradeSo[] GetAll()
+        public IEnumerable<UpgradeSo> GetAll()
         {
             var all = _upgradeStatus.UpgradePool;
             return all.ToArray();

@@ -5,7 +5,7 @@ using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Main.View
+namespace Main.View.Shop
 {
     public class ShopButton : MonoBehaviour
     {
@@ -14,9 +14,14 @@ namespace Main.View
         [Required] [SerializeField] private Transform _resourceContainer;
 
         private readonly List<RequiredResourceView> _requiredResourceViews = new();
+        private ShopView _callback;
+        private UpgradeSo _renderedUpgrade;
 
-        public void Render(UpgradeSo upgradeSo, Dictionary<ItemSo, int> cost)
+        public void Render(ShopView callback, UpgradeSo upgradeSo, Dictionary<ItemSo, int> cost)
         {
+            _renderedUpgrade = upgradeSo;
+            _callback = callback;
+
             _iconImage.sprite = upgradeSo.Icon;
             DespawnAll();
 
@@ -26,6 +31,11 @@ namespace Main.View
                 instance.Render(item.ItemSprite, amount);
                 _requiredResourceViews.Add(instance);
             }
+        }
+
+        public void OnClick()
+        {
+            _callback.Select(_renderedUpgrade);
         }
 
         private void DespawnAll()

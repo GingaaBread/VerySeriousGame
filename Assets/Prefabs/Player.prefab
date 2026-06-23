@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8599761487240050026}
   - component: {fileID: 6700991692678553892}
-  - component: {fileID: 8295166574374128233}
+  - component: {fileID: 6879183334456163580}
   m_Layer: 0
   m_Name: Surface Reached Tracker
   m_TagString: Untagged
@@ -135,8 +135,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _surfaceTransform: {fileID: 0}
-  _transitionEmitter: {fileID: 8295166574374128233}
---- !u!114 &8295166574374128233
+  _onSurfaceReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6879183334456163580}
+        m_TargetAssemblyTypeName: Main.Mono.Surface.SceneChange, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6879183334456163580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,59 +159,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 681564480133899377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c7751cd21f84eb5ae30364787995a6b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6747a5816199e01469016e92493e12b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionReference: {fileID: 11400000, guid: 869be144722eea54196c15cb24156f51, type: 2}
-  <Events>k__BackingField:
-    <OnCoverStart>k__BackingField:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5176657610668987411}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 482263008768282361}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    <OnHoldStart>k__BackingField:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6700991692678553892}
-          m_TargetAssemblyTypeName: Main.Mono.Player.SurfaceReachTracker, Assembly-CSharp
-          m_MethodName: LoadScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    <OnRevealStart>k__BackingField:
-      m_PersistentCalls:
-        m_Calls: []
-    <OnComplete>k__BackingField:
-      m_PersistentCalls:
-        m_Calls: []
+  _sceneName: Surface
+  _transition: {fileID: 11400000, guid: 869be144722eea54196c15cb24156f51, type: 2}
 --- !u!1 &5466072755137606731
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultMovementSpeed: 8
   _isAllowedToMoveUp: 0
+  _isAllowedToMoveDown: 1
   _animator: {fileID: 3292976870848344117}
 --- !u!114 &5176657610668987411
 MonoBehaviour:

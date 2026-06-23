@@ -26,6 +26,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d0d3985cba8d224e9291eff45796490
+    m_Address: Assets/AddressableAssets/Upgrades/upgrade.inventory_size.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - upgrade
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8499bd2b58440d74a918823df4991002
+    m_Address: Assets/AddressableAssets/Upgrades/upgrade.battery_cap.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - upgrade
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 869be144722eea54196c15cb24156f51
     m_Address: Assets/AddressableAssets/Transitions/transition.mine_to_surface.asset
     m_ReadOnly: 0
@@ -36,6 +48,18 @@ MonoBehaviour:
     m_Address: material.flash
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbb124baf52293e4481f1f0358496f2a
+    m_Address: Assets/AddressableAssets/Upgrades/upgrade.mining_speed.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - upgrade
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3390f5be8957a740b66785e43602837
+    m_Address: Assets/AddressableAssets/Upgrades/upgrade.mining_damage.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - upgrade
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 12211de40204a24408267a06573aa986, type: 2}

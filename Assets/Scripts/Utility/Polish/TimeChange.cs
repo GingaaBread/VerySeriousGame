@@ -19,6 +19,11 @@ namespace Utility.Polish
 
         private float _lastTime;
 
+        private void Awake()
+        {
+            _lastTime = Time.timeScale;
+        }
+
         private void OnDisable()
         {
             Time.timeScale = _lastTime;

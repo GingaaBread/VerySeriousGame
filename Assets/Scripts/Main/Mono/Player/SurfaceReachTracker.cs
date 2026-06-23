@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using Utility.Transitions;
+using UnityEngine.Events;
 
 namespace Main.Mono.Player
 {
     public class SurfaceReachTracker : MonoBehaviour
     {
         [SerializeField] private Transform _surfaceTransform;
-        [SerializeField] private TransitionEmitter _transitionEmitter;
+        [SerializeField] private UnityEvent _onSurfaceReached;
 
         private bool _isLoading;
 
@@ -24,14 +23,8 @@ namespace Main.Mono.Player
 
         private void LoadSurface()
         {
-            Debug.Log("Loading surface");
             _isLoading = true;
-            _transitionEmitter.Emit();
-        }
-
-        public void LoadScene()
-        {
-            SceneManager.LoadScene("Surface");
+            _onSurfaceReached?.Invoke();
         }
     }
 }

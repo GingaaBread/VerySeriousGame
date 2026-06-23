@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e906c389df4ae1b01695ed47cab892, type: 3}
+  m_Name: upgrade.inventory_size
+  m_EditorClassIdentifier: 
+  <UpgradeName>k__BackingField: Hoarder
+  <Description>k__BackingField: Increases the amount of items you can carry.
+  <Icon>k__BackingField: {fileID: 21300000, guid: 931b3f4e3b6d4e2ea221398145b5fcf4, type: 3}
+  <Cost>k__BackingField:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: fd1e881ec7edfa748ae194d27dbbd411, type: 2}
+      Value: 5

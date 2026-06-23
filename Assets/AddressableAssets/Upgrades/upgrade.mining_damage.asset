@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6e906c389df4ae1b01695ed47cab892, type: 3}
-  m_Name: upgrade.test
+  m_Name: upgrade.mining_damage
   m_EditorClassIdentifier: 
-  <UpgradeName>k__BackingField: Test Upgrade
-  <Description>k__BackingField: Just a simple test
-  <Icon>k__BackingField: {fileID: 21300000, guid: 04eb2f0114e94af46bcec7f3eeb7304d, type: 3}
+  <UpgradeName>k__BackingField: Sharpness
+  <Description>k__BackingField: Increases the damage your drill deals to objects.
+  <Icon>k__BackingField: {fileID: 21300000, guid: 23e38fd2084949fbae7116a1e31e76bc, type: 3}
   <Cost>k__BackingField:
     _serializedList:
     - Key: {fileID: 11400000, guid: fd1e881ec7edfa748ae194d27dbbd411, type: 2}

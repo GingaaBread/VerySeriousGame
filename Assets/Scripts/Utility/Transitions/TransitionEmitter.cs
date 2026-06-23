@@ -18,10 +18,10 @@ namespace Utility.Transitions
         [Serializable]
         public class EmitterEvents
         {
-            [field: SerializeField] public UnityEvent OnCoverStart { get; private set; }
-            [field: SerializeField] public UnityEvent OnHoldStart { get; private set; }
-            [field: SerializeField] public UnityEvent OnRevealStart { get; private set; }
-            [field: SerializeField] public UnityEvent OnComplete { get; private set; }
+            [field: SerializeField] public UnityEvent OnCoverStart { get; private set; } = new();
+            [field: SerializeField] public UnityEvent OnHoldStart { get; private set; } = new();
+            [field: SerializeField] public UnityEvent OnRevealStart { get; private set; } = new();
+            [field: SerializeField] public UnityEvent OnComplete { get; private set; } = new();
         }
     }
 }

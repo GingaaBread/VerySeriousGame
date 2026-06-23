@@ -1,4 +1,5 @@
-﻿using Main.Service;
+﻿using System.Collections;
+using Main.Service;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
@@ -17,12 +18,18 @@ namespace Main.View
 
         private void OnEnable()
         {
-            _interactionService.OnInteractionsUpdated += Render;
+            StartCoroutine(WaitUntilExists());
         }
 
         private void OnDisable()
         {
             _interactionService.OnInteractionsUpdated -= Render;
+        }
+
+        private IEnumerator WaitUntilExists()
+        {
+            yield return new WaitUntil(() => _interactionService != null);
+            _interactionService.OnInteractionsUpdated += Render;
         }
 
         private void Render(string prompt)

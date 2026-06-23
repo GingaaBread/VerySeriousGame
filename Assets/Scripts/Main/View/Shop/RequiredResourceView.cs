@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Main.View
+namespace Main.View.Shop
 {
     public class RequiredResourceView : MonoBehaviour
     {

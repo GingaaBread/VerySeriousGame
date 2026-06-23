@@ -34,12 +34,13 @@ namespace Utility.Transitions
             switch (revealStyle.StyleType)
             {
                 case TransitionStyleType.FADE:
-                    _fadeImage.gameObject.SetActive(true);
                     TweenFade(revealStyleTimeline, revealStyle.FadeColour, 1f, 0f)
                         .setDelay(transition.HoldDurationInSeconds)
+                        .setIgnoreTimeScale(true)
                         .setOnStart(() => events.OnRevealStart?.Invoke())
                         .setOnComplete(() =>
                         {
+                            _fadeImage.gameObject.SetActive(false);
                             events.OnComplete?.Invoke();
                             _notifier?.Invoke();
                         });

@@ -16,13 +16,18 @@ namespace Main.Mono.Interactions
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!other.CompareTag("Player")) return;
-            _interactionService.Register(this);
+            RegisterThis();
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if (!other.CompareTag("Player")) return;
             _interactionService.Unregister(this);
+        }
+
+        public void RegisterThis()
+        {
+            _interactionService.Register(this);
         }
     }
 }

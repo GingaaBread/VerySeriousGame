@@ -1,14 +1,14 @@
-using UnityEngine;
 using FMOD.Studio;
+using Main.Service;
+using UnityEngine;
 using VContainer;
 
 namespace Audio
 {
     public class DrillAudioController : MonoBehaviour
     {
+        [Inject] private readonly DrillActivationMediator _drillActivationMediator;
         private EventInstance _drillInstance;
-
-        [Inject] private readonly Main.Service.DrillActivationMediator _drillActivationMediator;
 
         private void OnEnable()
         {
@@ -18,6 +18,8 @@ namespace Audio
         private void OnDisable()
         {
             _drillActivationMediator.OnActivationChange -= UpdateFmodDrill;
+            _drillInstance.stop(STOP_MODE.IMMEDIATE);
+            _drillInstance.release();
         }
 
         private void UpdateFmodDrill(bool drillIsActive)
@@ -30,10 +32,7 @@ namespace Audio
             }
             else
             {
-                if (_drillInstance.isValid())
-                {
-                    _drillInstance.setParameterByName("isDrilling", 0f);
-                }
+                if (_drillInstance.isValid()) _drillInstance.setParameterByName("isDrilling", 0f);
             }
         }
     }
