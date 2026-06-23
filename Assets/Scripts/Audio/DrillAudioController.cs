@@ -26,7 +26,7 @@ namespace Audio
         {
             if (drillIsActive)
             {
-                _drillInstance = AudioManager.Instance.PlayLoop(AudioRegistry.Events.drillDrilling);
+                _drillInstance = AudioManager.Instance.PlayLoop(AudioRegistry.Events.DrillDrilling);
                 _drillInstance.setParameterByName("isDrilling", 1f);
                 Debug.Log("Forced Drill ON");
             }

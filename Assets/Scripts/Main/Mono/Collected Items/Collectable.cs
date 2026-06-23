@@ -99,6 +99,8 @@ namespace Main.Mono.Collected_Items
         {
             var damage = _playerStatService.CurrentMiningStrength();
             _currentSturdiness -= damage;
+            
+            Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.DrillHitResource);
 
             IndicatorManager.Instance.RequireAt(damage + string.Empty, transform.position + Vector3.up * 3);
             _healthBar.UpdatePercentage(GetCurrentPercentage());
@@ -110,6 +112,8 @@ namespace Main.Mono.Collected_Items
         {
             Debug.Log($"Destroyed {name}. Now collecting the item yield.");
             _playerInventoryService.Collect(_itemYield);
+            
+            Audio.AudioManager.Instance.PlayOneShot3D(AudioRegistry.Events.DrillDestroyResource, transform.position);
 
             IndicatorManager.Instance.RequireAt("BAM!", transform.position + Vector3.up * 3);
             ClearHealthBar();

@@ -93,24 +93,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5fd77717591054d832767bb1fbc7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicTest:
+  MusicTest:
     Guid:
       Data1: 1199419566
       Data2: 1289692191
       Data3: -589174903
       Data4: -1810314158
     Path: event:/Music/Intro
-  drillDrilling:
+  DrillDrilling:
     Guid:
       Data1: 694581547
       Data2: 1210847624
       Data3: 1852591788
       Data4: -261810714
     Path: event:/SFX/Drill/Drill_On
-  drillHit:
+  DrillHitDirt:
     Guid:
       Data1: 117736884
       Data2: 1103021320
       Data3: 618192772
       Data4: -1304715096
-    Path: event:/SFX/Drill/Drill_Hit
+    Path: event:/SFX/Drill/Drill_Hit_Dirt
+  DrillHitResource:
+    Guid:
+      Data1: 1593796236
+      Data2: 1073883533
+      Data3: -202792562
+      Data4: -549533421
+    Path: event:/SFX/Drill/Drill_Hit_Resource
+  DrillDestroyResource:
+    Guid:
+      Data1: -642675954
+      Data2: 1338680385
+      Data3: -1296683841
+      Data4: -180000268
+    Path: event:/SFX/Drill/Drill_Destroy_Resource
