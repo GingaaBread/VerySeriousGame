@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5076377869073821256}
   - component: {fileID: 7267871855697314677}
-  - component: {fileID: 8543391808403826657}
   m_Layer: 0
   m_Name: Scope Test
   m_TagString: Untagged
@@ -49,15 +48,3 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
---- !u!114 &8543391808403826657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4021576518584108803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8486ae3b2f7b4091aa496d36038255a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

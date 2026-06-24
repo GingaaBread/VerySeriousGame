@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UpgradeName>k__BackingField: Hoarder
   <Description>k__BackingField: Increases the amount of items you can carry.
-  <Icon>k__BackingField: {fileID: 21300000, guid: 931b3f4e3b6d4e2ea221398145b5fcf4, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 3a5ccc23d94f8e4469f97abcdb6725fe, type: 3}
   <Cost>k__BackingField:
     _serializedList:
     - Key: {fileID: 11400000, guid: fd1e881ec7edfa748ae194d27dbbd411, type: 2}

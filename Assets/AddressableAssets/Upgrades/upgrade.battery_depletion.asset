@@ -15,7 +15,7 @@ MonoBehaviour:
   <UpgradeName>k__BackingField: Efficient Defficiency
   <Description>k__BackingField: Increases the interval it takes for the battery to
     lose power, giving you more time to drill.
-  <Icon>k__BackingField: {fileID: 21300000, guid: 9edf2d96598b97844a597560ced57f5b, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 504f518ebb53a3945be603a711506544, type: 3}
   <Cost>k__BackingField:
     _serializedList:
     - Key: {fileID: 11400000, guid: 771553ae425a5b7469f3a2dfbd926f2c, type: 2}

@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Teleportation Orb
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Teleportation Orb
+  <ItemDescription>k__BackingField: 'Immediately teleports you to the surface area.
+
+    Consumed
+    on use.'
   <ItemSprite>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

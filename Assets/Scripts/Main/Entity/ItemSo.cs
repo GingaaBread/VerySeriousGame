@@ -7,7 +7,7 @@ namespace Main.Entity
     public class ItemSo : ScriptableObject
     {
         [field: SerializeField] public string ItemName { get; private set; } = "New Item";
-        [field: SerializeField] public string ItemDescription { get; private set; } = "New Item";
+        [field: SerializeField] [field: TextArea] public string ItemDescription { get; private set; } = "New Item";
 
         [field: SerializeField]
         [field: ShowAssetPreview]

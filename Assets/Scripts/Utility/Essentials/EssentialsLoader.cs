@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
-using Utility.Scopes;
-using VContainer.Unity;
 
 namespace Utility.Essentials
 {
@@ -15,16 +13,7 @@ namespace Utility.Essentials
             _isLoading = true;
 
             var handle = Addressables.InstantiateAsync("spawned-essentials");
-            var essentials = await handle.Task;
-            var injected = essentials.GetComponent<SpawnedEssentials>().Injected;
-            var scope = FindAnyObjectByType<BaseLifetimeScope>();
-
-            foreach (var i in injected)
-            {
-                scope.Container.InjectGameObject(i);
-            }
-
-            scope.Container.InjectGameObject(essentials);
+            await handle.Task;
         }
     }
 }
