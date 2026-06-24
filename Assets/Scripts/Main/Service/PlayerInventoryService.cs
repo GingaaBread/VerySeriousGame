@@ -1,15 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using Main.Entity;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using VContainer.Unity;
 
 namespace Main.Service
 {
     [UsedImplicitly]
-    public sealed class PlayerInventoryService
+    public sealed class PlayerInventoryService : IAsyncStartable
     {
         private readonly PlayerInventory _playerInventory = new();
+        private ItemSo _currency;
+
+        public async UniTask StartAsync(CancellationToken cancellation) =>
+            _currency = await Addressables.LoadAssetAsync<ItemSo>("currency");
 
         public event Action<ItemSo> OnItemCollected;
 
@@ -19,13 +28,14 @@ namespace Main.Service
             Debug.Log($"Increased the carry limit. It is now: {_playerInventory.CurrentInventoryLimit}");
         }
 
-        public void Collect(ItemSo item)
+        public void Collect(ItemSo item, int amount = 1)
         {
             if (InventoryIsFull())
                 Debug.LogWarning("Should not try to collect an item if the inventory is full. Check first!");
 
-            if (!_playerInventory.ItemsInInventory.TryAdd(item, 1)) _playerInventory.ItemsInInventory[item]++;
-            _playerInventory.CurrentInventorySize++;
+            if (!_playerInventory.ItemsInInventory.TryAdd(item, amount)) _playerInventory.ItemsInInventory[item]++;
+
+            if (item != _currency) _playerInventory.CurrentInventorySize++;
 
             OnItemCollected?.Invoke(item);
             Debug.Log($"Collected 1x {item.ItemName}");
@@ -33,7 +43,6 @@ namespace Main.Service
 
         public void Remove(Dictionary<ItemSo, int> items)
         {
-            Debug.Log($"Removing multiple ({items.Count}) items");
             foreach (var (item, amount) in items)
             {
                 Remove(item, amount);
@@ -90,16 +99,24 @@ namespace Main.Service
                 Debug.Log($"Completely removed {item.ItemName} from the inventory");
             }
 
-            _playerInventory.CurrentInventorySize -= amount;
+            if (item != _currency) _playerInventory.CurrentInventorySize -= amount;
         }
 
         public bool InventoryIsFull() =>
             _playerInventory.CurrentInventorySize >= _playerInventory.CurrentInventoryLimit;
 
-        public bool CanRemove(ItemSo soldItemItem)
+        public Dictionary<ItemSo, int> GetAll() => _playerInventory
+            .ItemsInInventory
+            .Where(kvp => kvp.Key != _currency)
+            .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+        public void SellAllOf(ItemSo item)
         {
-            if (!_playerInventory.ItemsInInventory.ContainsKey(soldItemItem)) return false;
-            return _playerInventory.ItemsInInventory[soldItemItem] > 0;
+            if (!_playerInventory.ItemsInInventory.ContainsKey(item)) return;
+            var amount = _playerInventory.ItemsInInventory[item];
+            var total = amount * item.MoneyWorth;
+            Remove(item, amount);
+            Collect(_currency, total);
         }
     }
 }

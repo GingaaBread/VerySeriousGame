@@ -12,5 +12,7 @@ namespace Main.Entity
         [field: SerializeField]
         [field: ShowAssetPreview]
         public Sprite ItemSprite { get; private set; }
+
+        [field: SerializeField] public int MoneyWorth { get; private set; }
     }
 }

@@ -61,6 +61,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - upgrade
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd1e881ec7edfa748ae194d27dbbd411
+    m_Address: currency
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 12211de40204a24408267a06573aa986, type: 2}
   m_SchemaSet:

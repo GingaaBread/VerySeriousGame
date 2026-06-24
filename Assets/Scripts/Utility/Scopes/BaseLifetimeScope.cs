@@ -12,7 +12,7 @@ namespace Utility.Scopes
         protected override void Configure(IContainerBuilder builder)
         {
             builder.Register<PlayerStatService>(Lifetime.Singleton);
-            builder.Register<PlayerInventoryService>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<PlayerInventoryService>().AsSelf();
             builder.RegisterEntryPoint<BatteryService>().AsSelf();
             builder.RegisterEntryPoint<DrillService>().AsSelf();
             builder.RegisterEntryPoint<UpgradeService>().AsSelf();

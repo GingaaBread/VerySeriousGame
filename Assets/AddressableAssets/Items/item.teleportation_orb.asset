@@ -10,7 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85fba808e01740338aaa6f0628d5c764, type: 3}
-  m_Name: Rock
+  m_Name: item.teleportation_orb
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Rock
-  <ItemSprite>k__BackingField: {fileID: 21300000, guid: d290f6c9f3fced2408e64cb57373a876, type: 3}
+  <ItemName>k__BackingField: Teleportation Orb
+  <ItemDescription>k__BackingField: 'Immediately teleports you to the surface area.
+
+    Consumed
+    on use.'
+  <ItemSprite>k__BackingField: {fileID: 21300000, guid: 5cd2c9bcd02fdbf4991336324f6e8336, type: 3}
+  <MoneyWorth>k__BackingField: 2

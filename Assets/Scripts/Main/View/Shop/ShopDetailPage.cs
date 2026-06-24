@@ -15,7 +15,15 @@ namespace Main.View.Shop
         {
             _nameText.text = header;
             _descriptionText.text = description;
+            _iconImage.enabled = true;
             _iconImage.sprite = icon;
+        }
+
+        public void HideContent()
+        {
+            _nameText.text = string.Empty;
+            _descriptionText.text = string.Empty;
+            _iconImage.enabled = false;
         }
     }
 }

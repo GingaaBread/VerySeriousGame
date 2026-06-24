@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85fba808e01740338aaa6f0628d5c764, type: 3}
-  m_Name: Gold
+  m_Name: item.coin
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: Gold
-  <ItemSprite>k__BackingField: {fileID: 21300000, guid: 4ee9b73dd177bc3498127ce3ef865016, type: 3}
+  <ItemName>k__BackingField: Coin
+  <ItemDescription>k__BackingField: Used for trading in the seven colonies.
+  <ItemSprite>k__BackingField: {fileID: 21300000, guid: b0cc8ba74df3b2c4db33efa037b90568, type: 3}
+  <MoneyWorth>k__BackingField: 1

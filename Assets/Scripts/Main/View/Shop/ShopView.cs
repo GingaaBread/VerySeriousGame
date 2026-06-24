@@ -7,7 +7,6 @@ using Main.Service;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utility;
 using VContainer;
@@ -16,15 +15,14 @@ namespace Main.View.Shop
 {
     public class ShopView : MonoBehaviour
     {
+        [Required] [SerializeField] private ItemSo _moneyItem;
         [Required] [SerializeField] private GameObject _container;
         [Required] [SerializeField] private ShopButton _shopButtonPrefab;
         [Required] [SerializeField] private Transform _scrollViewContent;
         [Required] [SerializeField] private ShopDetailPage _shopDetailPage;
         [Required] [SerializeField] private GameObject _purchaseButton;
-
-        [FormerlySerializedAs("_sellButton")] [Required] [SerializeField]
-        private GameObject _buyButton;
-
+        [Required] [SerializeField] private GameObject _buyButton;
+        [Required] [SerializeField] private GameObject _sellButton;
         [Required] [SerializeField] private RequiredResourceView _requiredResourcePrefab;
         [Required] [SerializeField] private Transform _requiredResourceTransform;
         [SerializeField] private UnityEvent _onClose;
@@ -33,11 +31,12 @@ namespace Main.View.Shop
         private readonly List<ShopButton> _shopButtonInstances = new();
         [Inject] private readonly UpgradeService _upgradeService;
         private ShopkeeperStock.SoldItem _currentlySelectedItem;
+        private ItemSo _currentlySelectedItemToSell;
         private UpgradeSo _currentlySelectedUpgrade;
         private ShopkeeperStock _shopkeeperStock;
         private List<UpgradeSo> _upgrades;
 
-        public void TrySellCurrent()
+        public void TryBuyCurrent()
         {
             if (_currentlySelectedItem == null || _playerInventoryService.InventoryIsFull() ||
                 !_playerInventoryService.CanRemove(_currentlySelectedItem.Cost)) return;
@@ -46,12 +45,27 @@ namespace Main.View.Shop
             Select(_currentlySelectedItem); // <- could be unavailable  now
         }
 
+        public void TryPurchaseCurrent()
+        {
+            if (_currentlySelectedUpgrade == null) return;
+            _upgradeService.Purchase(_currentlySelectedUpgrade);
+            Select(_currentlySelectedUpgrade); // <- could be unavailable for purchase now
+        }
+
+        public void TrySellCurrent()
+        {
+            if (_currentlySelectedItemToSell == null) return;
+            _playerInventoryService.SellAllOf(_currentlySelectedItemToSell);
+            RenderSell(); // <- is unavailable for purchase now
+        }
+
         public void Select(UpgradeSo upgrade)
         {
             _currentlySelectedUpgrade = _upgrades.FirstOrDefault(e => e == upgrade);
             _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
             _detailResourceInstances.Clear();
             _buyButton.SetActive(false);
+            _sellButton.SetActive(false);
 
             if (_currentlySelectedUpgrade == null) return;
 
@@ -78,12 +92,33 @@ namespace Main.View.Shop
             _shopDetailPage.Render(upgrade.UpgradeName, upgrade.Description, upgrade.Icon);
         }
 
+        public void Select(ItemSo renderedItemSoldByPlayer, ItemSo renderedItemGivenToPlayer,
+            int renderedGivenAmount)
+        {
+            _currentlySelectedItemToSell = renderedItemSoldByPlayer;
+            _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
+            _detailResourceInstances.Clear();
+
+            _sellButton.SetActive(true);
+            _buyButton.SetActive(false);
+            _purchaseButton.SetActive(false);
+
+            var instance =
+                LeanPool.Spawn(_requiredResourcePrefab, _requiredResourceTransform);
+            instance.Render(renderedItemGivenToPlayer.ItemSprite, renderedGivenAmount + string.Empty, Color.green);
+            _detailResourceInstances.Add(instance);
+
+            _shopDetailPage.Render(renderedItemSoldByPlayer.ItemName, renderedItemSoldByPlayer.ItemDescription,
+                renderedItemSoldByPlayer.ItemSprite);
+        }
+
         public void Select(ShopkeeperStock.SoldItem soldItem)
         {
             _currentlySelectedItem = _shopkeeperStock.SoldItems.FirstOrDefault(e => e == soldItem);
             _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
             _detailResourceInstances.Clear();
             _purchaseButton.SetActive(false);
+            _sellButton.SetActive(false);
 
             if (_currentlySelectedUpgrade == null) return;
 
@@ -118,11 +153,27 @@ namespace Main.View.Shop
             _shopDetailPage.Render(soldItem.Item.ItemName, soldItem.Item.ItemDescription, soldItem.Item.ItemSprite);
         }
 
-        public void TryPurchaseCurrent()
+        public void RenderSell()
         {
-            if (_currentlySelectedUpgrade == null) return;
-            _upgradeService.Purchase(_currentlySelectedUpgrade);
-            Select(_currentlySelectedUpgrade); // <- could be unavailable for purchase now
+            var inventory = _playerInventoryService.GetAll();
+            Render();
+            foreach (var (item, amount) in inventory)
+            {
+                var instance = LeanPool.Spawn(_shopButtonPrefab, _scrollViewContent);
+                _shopButtonInstances.Add(instance);
+                instance.Render(this, item, amount, _moneyItem, item.MoneyWorth);
+                LayoutRebuilder.ForceRebuildLayoutImmediate(_scrollViewContent as RectTransform);
+            }
+
+            if (inventory.Count is 0)
+            {
+                DespawnAll();
+                _shopDetailPage.HideContent();
+                return;
+            }
+
+            var any = inventory.First();
+            Select(any.Key, _moneyItem, any.Key.MoneyWorth);
         }
 
         public void RenderUpgrades()
@@ -137,7 +188,7 @@ namespace Main.View.Shop
                 LayoutRebuilder.ForceRebuildLayoutImmediate(_scrollViewContent as RectTransform);
             }
 
-            Select(_upgrades[0]);
+            if (_upgrades.Count is not 0) Select(_upgrades[0]);
         }
 
         public void Render(ShopkeeperStock shopkeeperStock)
@@ -157,7 +208,7 @@ namespace Main.View.Shop
                 LayoutRebuilder.ForceRebuildLayoutImmediate(_scrollViewContent as RectTransform);
             }
 
-            Select(_shopkeeperStock.SoldItems[0]);
+            if (_upgrades.Count is not 0) Select(_shopkeeperStock.SoldItems[0]);
         }
 
         public void Close()
