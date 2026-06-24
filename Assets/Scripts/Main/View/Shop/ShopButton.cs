@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Lean.Pool;
 using Main.Entity;
+using Main.Entity.Upgrade;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;

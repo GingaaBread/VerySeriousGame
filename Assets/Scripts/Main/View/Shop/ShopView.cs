@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Lean.Pool;
-using Main.Entity;
+using Main.Entity.Upgrade;
 using Main.Service;
 using NaughtyAttributes;
 using UnityEngine;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 060fcb0b7f1f32e429d52244ddaf4109
+guid: 55238d5db658f084fb06605f909b1019
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -110,67 +110,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Die_3_0
+      name: SHOPKEEPER_NOTICE_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 77
-        width: 27
-        height: 27
+        x: 0
+        y: 128
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6e347b15ad75311c0800000000000000
-      internalID: -4534183804646505498
+      spriteID: bd36ad92d217e80428f28c87ba6ba112
+      internalID: -1705052093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Die_3_1
+      name: SHOPKEEPER_NOTICE_1
       rect:
         serializedVersion: 2
-        x: 52
-        y: 51
-        width: 27
-        height: 29
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8205b8a4e177ebd40800000000000000
-      internalID: 5602045958478843944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Die_3_2
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 28
-        width: 27
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 183b13e1ecbee68a0800000000000000
-      internalID: -6309846757397122175
+      spriteID: b2adfc38ee3e6044fb512111f6d84b48
+      internalID: -837603419
       vertices: []
       indices: 
       edges: []
@@ -189,9 +167,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Die_3_0: -4534183804646505498
-      Die_3_1: 5602045958478843944
-      Die_3_2: -6309846757397122175
+      SHOPKEEPER_NOTICE_0: -1705052093
+      SHOPKEEPER_NOTICE_1: -837603419
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

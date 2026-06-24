@@ -12,6 +12,7 @@ namespace Utility.Scopes
             builder.Register<PlayerInventoryService>(Lifetime.Singleton);
             builder.RegisterEntryPoint<BatteryService>().AsSelf();
             builder.RegisterEntryPoint<DrillService>().AsSelf();
+            builder.RegisterEntryPoint<UpgradeService>();
 
             builder.Register<DrillActivationMediator>(Lifetime.Singleton);
 

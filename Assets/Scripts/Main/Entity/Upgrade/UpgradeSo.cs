@@ -2,7 +2,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Main.Entity
+namespace Main.Entity.Upgrade
 {
     [CreateAssetMenu(fileName = "Upgrade", menuName = "Upgrade", order = 0)]
     public class UpgradeSo : ScriptableObject
@@ -21,5 +21,8 @@ namespace Main.Entity
         [field: SerializeField]
         [field: HorizontalLine]
         public SerializedDictionary<ItemSo, int> Cost { get; private set; } = new();
+
+        [field: SerializeField]
+        public UpgradeEffect[] Effects { get; private set; }
     }
 }

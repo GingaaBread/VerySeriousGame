@@ -1,4 +1,5 @@
 ﻿using Main.Entity;
+using Main.Entity.Upgrade;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;

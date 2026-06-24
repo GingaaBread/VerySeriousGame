@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Main.Entity
+namespace Main.Entity.Upgrade
 {
     public class UpgradeStatus
     {
