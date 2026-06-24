@@ -16,11 +16,13 @@ namespace Main.View.Shop
 
         private readonly List<RequiredResourceView> _requiredResourceViews = new();
         private ShopView _callback;
+        private ShopkeeperStock.SoldItem _renderedSoldItem;
         private UpgradeSo _renderedUpgrade;
 
         public void Render(ShopView callback, UpgradeSo upgradeSo, Dictionary<ItemSo, int> cost)
         {
             _renderedUpgrade = upgradeSo;
+            _renderedSoldItem = null;
             _callback = callback;
 
             _iconImage.sprite = upgradeSo.Icon;
@@ -34,9 +36,27 @@ namespace Main.View.Shop
             }
         }
 
+        public void Render(ShopView callback, ShopkeeperStock.SoldItem soldItem)
+        {
+            _renderedUpgrade = null;
+            _renderedSoldItem = soldItem;
+            _callback = callback;
+
+            _iconImage.sprite = soldItem.Item.ItemSprite;
+            DespawnAll();
+
+            foreach (var (costItem, amount) in soldItem.Cost)
+            {
+                var instance = LeanPool.Spawn(_requiredResourcePrefab, _resourceContainer);
+                instance.Render(costItem.ItemSprite, amount + string.Empty, Color.green);
+                _requiredResourceViews.Add(instance);
+            }
+        }
+
         public void OnClick()
         {
-            _callback.Select(_renderedUpgrade);
+            if (_renderedUpgrade != null) _callback.Select(_renderedUpgrade);
+            else if (_renderedSoldItem != null) _callback.Select(_renderedSoldItem);
         }
 
         private void DespawnAll()

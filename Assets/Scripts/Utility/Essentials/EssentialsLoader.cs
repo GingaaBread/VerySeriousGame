@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
-using VContainer;
+using Utility.Scopes;
 using VContainer.Unity;
 
 namespace Utility.Essentials
@@ -8,7 +8,6 @@ namespace Utility.Essentials
     public class EssentialsLoader : MonoBehaviour
     {
         private static bool _isLoading;
-        [Inject] private IObjectResolver _resolver;
 
         private async void Awake()
         {
@@ -18,13 +17,14 @@ namespace Utility.Essentials
             var handle = Addressables.InstantiateAsync("spawned-essentials");
             var essentials = await handle.Task;
             var injected = essentials.GetComponent<SpawnedEssentials>().Injected;
+            var scope = FindAnyObjectByType<BaseLifetimeScope>();
 
             foreach (var i in injected)
             {
-                _resolver.InjectGameObject(i);
+                scope.Container.InjectGameObject(i);
             }
 
-            _resolver.InjectGameObject(essentials);
+            scope.Container.InjectGameObject(essentials);
         }
     }
 }
