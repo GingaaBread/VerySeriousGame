@@ -8213,11 +8213,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &938196206 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3715813078560167176, guid: 8874443ec722e694988aec4807ea5b2f, type: 3}
-  m_PrefabInstance: {fileID: 7967732237652100864}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &960784801
 GameObject:
   m_ObjectHideFlags: 0
@@ -8262,15 +8257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec9e79adc644b838e267c41beb5694e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentReference:
-    TypeName: Utility.Scopes.BaseLifetimeScope
-  autoRun: 1
-  autoInjectGameObjects:
-  - {fileID: 938196206}
-  - {fileID: 1016004154}
-  - {fileID: 1159840884}
-  - {fileID: 4771010710260565689}
-  - {fileID: 1317687478}
 --- !u!1001 &987784888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8493,11 +8479,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
---- !u!1 &1016004154 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 648165755764619189, guid: d4d97d723bf624c41a584b9622e78e20, type: 3}
-  m_PrefabInstance: {fileID: 1016004153}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1048974213
 GameObject:
   m_ObjectHideFlags: 0
@@ -11547,6 +11528,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2623671999916419707, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
   m_PrefabInstance: {fileID: 4771010710260565688}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1538315082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 482263008768282361, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+  m_PrefabInstance: {fileID: 4771010710260565688}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317687478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0eba11d07f9bb4daa550e1634940c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1558793503
 GameObject:
   m_ObjectHideFlags: 0
@@ -13239,6 +13231,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1918465130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918465131}
+  - component: {fileID: 1918465132}
+  m_Layer: 0
+  m_Name: Scope
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1918465131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918465130}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1918465132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918465130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3666656e6854498bb8698b5cccca5c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: Utility.Scopes.BaseLifetimeScope
+  autoRun: 1
+  autoInjectGameObjects:
+  - {fileID: 1159840884}
+  - {fileID: 1317687478}
+  - {fileID: 2076986764}
 --- !u!1 &1929257478
 GameObject:
   m_ObjectHideFlags: 0
@@ -14220,6 +14263,34 @@ PrefabInstance:
       propertyPath: _surfaceTransform
       value: 
       objectReference: {fileID: 1400535488}
+    - target: {fileID: 6700991692678553892, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+      propertyPath: _onSurfaceReached.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700991692678553892, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+      propertyPath: _onSurfaceReached.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700991692678553892, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+      propertyPath: _onSurfaceReached.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1538315082}
+    - target: {fileID: 6700991692678553892, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+      propertyPath: _onSurfaceReached.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700991692678553892, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+      propertyPath: _onSurfaceReached.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Freeze
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700991692678553892, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+      propertyPath: _onSurfaceReached.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Main.Mono.Player.PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700991692678553892, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
+      propertyPath: _onSurfaceReached.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8856986198238470405, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
       propertyPath: _centreTransform
       value: 
@@ -14229,11 +14300,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
---- !u!1 &4771010710260565689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 521056847852001743, guid: 153a50801cdb75f499e4cda14cc06a01, type: 3}
-  m_PrefabInstance: {fileID: 4771010710260565688}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7122900801860538700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14430,3 +14496,4 @@ SceneRoots:
   - {fileID: 263896027}
   - {fileID: 1768296636}
   - {fileID: 1016004153}
+  - {fileID: 1918465131}

@@ -95,5 +95,11 @@ namespace Main.Service
 
         public bool InventoryIsFull() =>
             _playerInventory.CurrentInventorySize >= _playerInventory.CurrentInventoryLimit;
+
+        public bool CanRemove(ItemSo soldItemItem)
+        {
+            if (!_playerInventory.ItemsInInventory.ContainsKey(soldItemItem)) return false;
+            return _playerInventory.ItemsInInventory[soldItemItem] > 0;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using Main.Service;
 using NaughtyAttributes;
 using TMPro;
@@ -15,13 +16,19 @@ namespace Main.View
 
         private void OnEnable()
         {
-            _batteryService.OnBatteryAmountUpdated += Render;
-            Render(_batteryService.GetCurrentBattery(), _batteryService.GetCurrentMaxBattery());
+            StartCoroutine(WaitForService());
         }
 
         private void OnDisable()
         {
             _batteryService.OnBatteryAmountUpdated -= Render;
+        }
+
+        private IEnumerator WaitForService()
+        {
+            yield return new WaitUntil(() => _batteryService != null);
+            _batteryService.OnBatteryAmountUpdated += Render;
+            Render(_batteryService.GetCurrentBattery(), _batteryService.GetCurrentMaxBattery());
         }
 
 

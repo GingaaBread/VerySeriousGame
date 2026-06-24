@@ -48,7 +48,7 @@ namespace Main.View.Shop
             foreach (var (costItem, amount) in soldItem.Cost)
             {
                 var instance = LeanPool.Spawn(_requiredResourcePrefab, _resourceContainer);
-                instance.Render(costItem.ItemSprite, amount + string.Empty, Color.green);
+                instance.Render(costItem.ItemSprite, amount + string.Empty, Color.white);
                 _requiredResourceViews.Add(instance);
             }
         }

@@ -7,6 +7,7 @@ using Main.Service;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utility;
 using VContainer;
@@ -20,6 +21,10 @@ namespace Main.View.Shop
         [Required] [SerializeField] private Transform _scrollViewContent;
         [Required] [SerializeField] private ShopDetailPage _shopDetailPage;
         [Required] [SerializeField] private GameObject _purchaseButton;
+
+        [FormerlySerializedAs("_sellButton")] [Required] [SerializeField]
+        private GameObject _buyButton;
+
         [Required] [SerializeField] private RequiredResourceView _requiredResourcePrefab;
         [Required] [SerializeField] private Transform _requiredResourceTransform;
         [SerializeField] private UnityEvent _onClose;
@@ -32,11 +37,21 @@ namespace Main.View.Shop
         private ShopkeeperStock _shopkeeperStock;
         private List<UpgradeSo> _upgrades;
 
+        public void TrySellCurrent()
+        {
+            if (_currentlySelectedItem == null || _playerInventoryService.InventoryIsFull() ||
+                !_playerInventoryService.CanRemove(_currentlySelectedItem.Cost)) return;
+            _playerInventoryService.Collect(_currentlySelectedItem.Item);
+            _playerInventoryService.Remove(_currentlySelectedItem.Cost);
+            Select(_currentlySelectedItem); // <- could be unavailable  now
+        }
+
         public void Select(UpgradeSo upgrade)
         {
             _currentlySelectedUpgrade = _upgrades.FirstOrDefault(e => e == upgrade);
             _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
             _detailResourceInstances.Clear();
+            _buyButton.SetActive(false);
 
             if (_currentlySelectedUpgrade == null) return;
 
@@ -68,12 +83,21 @@ namespace Main.View.Shop
             _currentlySelectedItem = _shopkeeperStock.SoldItems.FirstOrDefault(e => e == soldItem);
             _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
             _detailResourceInstances.Clear();
+            _purchaseButton.SetActive(false);
 
             if (_currentlySelectedUpgrade == null) return;
 
-            if (_playerInventoryService.CanRemove(soldItem.Cost))
+            if (_playerInventoryService.InventoryIsFull())
             {
-                _purchaseButton.SetActive(true);
+                _buyButton.SetActive(false);
+                var instance =
+                    LeanPool.Spawn(_requiredResourcePrefab, _requiredResourceTransform);
+                instance.Render("Inventory full!", Color.red);
+                _detailResourceInstances.Add(instance);
+            }
+            else if (_playerInventoryService.CanRemove(soldItem.Cost))
+            {
+                _buyButton.SetActive(true);
             }
             else
             {
@@ -88,7 +112,7 @@ namespace Main.View.Shop
                     _detailResourceInstances.Add(instance);
                 }
 
-                _purchaseButton.SetActive(false);
+                _buyButton.SetActive(false);
             }
 
             _shopDetailPage.Render(soldItem.Item.ItemName, soldItem.Item.ItemDescription, soldItem.Item.ItemSprite);
