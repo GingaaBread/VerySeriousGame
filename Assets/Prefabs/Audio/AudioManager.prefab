@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6451735092116011861}
   - component: {fileID: 1452946778604519183}
+  - component: {fileID: 168249820101424049}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -49,6 +50,18 @@ MonoBehaviour:
   musicVolume: 1
   sfxVolume: 1
   ambienceVolume: 1
+--- !u!114 &168249820101424049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956704079097570021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba6f7df37a88eb43bac1ef0838dc6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4074577746938425096
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +113,13 @@ MonoBehaviour:
       Data3: -589174903
       Data4: -1810314158
     Path: event:/Music/Intro
+  WorldAmbience:
+    Guid:
+      Data1: -1222135761
+      Data2: 1165901987
+      Data3: -953515845
+      Data4: -1698312391
+    Path: event:/Ambience/World_Ambience
   DrillDrilling:
     Guid:
       Data1: 694581547
@@ -128,3 +148,31 @@ MonoBehaviour:
       Data3: -1296683841
       Data4: -180000268
     Path: event:/SFX/Drill/Drill_Destroy_Resource
+  StoreOpen:
+    Guid:
+      Data1: -1076595165
+      Data2: 1252724213
+      Data3: -84850536
+      Data4: 696101717
+    Path: event:/SFX/Store/Store_Open
+  StoreTab:
+    Guid:
+      Data1: 1900927923
+      Data2: 1105077597
+      Data3: 1287606167
+      Data4: 1555675029
+    Path: event:/SFX/Store/Store_Tab
+  StoreBuy:
+    Guid:
+      Data1: -1182200240
+      Data2: 1134697551
+      Data3: -1428162650
+      Data4: -1305895250
+    Path: event:/SFX/Store/Store_Buy
+  StoreError:
+    Guid:
+      Data1: 1321732353
+      Data2: 1255999471
+      Data3: 910903707
+      Data4: -788988743
+    Path: event:/SFX/Store/Store_Error

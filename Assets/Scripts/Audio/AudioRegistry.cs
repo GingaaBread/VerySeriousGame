@@ -8,11 +8,18 @@ public class AudioRegistry : MonoBehaviour
     [Header("Music")]
     public EventReference MusicTest;
     
+    [Header("Ambience")]
+    public EventReference WorldAmbience;
+    
     [Header("SFX")]
     public EventReference DrillDrilling;
     public EventReference DrillHitDirt;
     public EventReference DrillHitResource;
     public EventReference DrillDestroyResource;
+    public EventReference StoreOpen;
+    public EventReference StoreTab;
+    public EventReference StoreBuy;
+    public EventReference StoreError;
 
     private void Awake()
     {
