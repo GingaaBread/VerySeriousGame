@@ -21,6 +21,7 @@ namespace Main.Service
             _currency = await Addressables.LoadAssetAsync<ItemSo>("currency");
 
         public event Action<ItemSo> OnItemCollected;
+        public event Action<ItemSo, int> OnConsumableUpdated;
 
         public void IncrementCarryLimit()
         {
@@ -36,6 +37,8 @@ namespace Main.Service
             if (!_playerInventory.ItemsInInventory.TryAdd(item, amount)) _playerInventory.ItemsInInventory[item]++;
 
             if (item != _currency) _playerInventory.CurrentInventorySize++;
+
+            if (item.IsConsumable) OnConsumableUpdated?.Invoke(item, _playerInventory.ItemsInInventory[item]);
 
             OnItemCollected?.Invoke(item);
             Debug.Log($"Collected 1x {item.ItemName}");
@@ -89,6 +92,7 @@ namespace Main.Service
             }
 
             _playerInventory.ItemsInInventory[item] -= amount;
+            if (item.IsConsumable) OnConsumableUpdated?.Invoke(item, _playerInventory.ItemsInInventory[item]);
 
             var newAmount = _playerInventory.ItemsInInventory[item];
             if (newAmount < 0) Debug.LogError("Removing resulted in a negative amount. Check first!");
@@ -117,6 +121,13 @@ namespace Main.Service
             var total = amount * item.MoneyWorth;
             Remove(item, amount);
             Collect(_currency, total);
+        }
+
+        public (ItemSo, int) GetConsumable()
+        {
+            var i = _playerInventory.ItemsInInventory.FirstOrDefault(e => e.Key.IsConsumable);
+
+            return i.Key == null ? (null, 0) : (i.Key, i.Value);
         }
     }
 }

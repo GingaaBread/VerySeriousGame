@@ -14,5 +14,6 @@ namespace Main.Entity
         public Sprite ItemSprite { get; private set; }
 
         [field: SerializeField] public int MoneyWorth { get; private set; }
+        [field: SerializeField] public bool IsConsumable { get; private set; }
     }
 }
