@@ -100,6 +100,20 @@ MonoBehaviour:
       Data3: -589174903
       Data4: -1810314158
     Path: event:/Music/Intro
+  AmbienceMines:
+    Guid:
+      Data1: -1222135761
+      Data2: 1165901987
+      Data3: -953515845
+      Data4: -1698312391
+    Path: event:/Ambience/Mines
+  AmbienceSurface:
+    Guid:
+      Data1: 406513309
+      Data2: 1224607373
+      Data3: -899893601
+      Data4: -922154088
+    Path: event:/Ambience/Surface
   DrillDrilling:
     Guid:
       Data1: 694581547
@@ -128,3 +142,38 @@ MonoBehaviour:
       Data3: -1296683841
       Data4: -180000268
     Path: event:/SFX/Drill/Drill_Destroy_Resource
+  ItemPickup:
+    Guid:
+      Data1: 703611066
+      Data2: 1208519766
+      Data3: 1705196964
+      Data4: 581964328
+    Path: event:/SFX/Item/Item_Pickup
+  StoreBuy:
+    Guid:
+      Data1: -1182200240
+      Data2: 1134697551
+      Data3: -1428162650
+      Data4: -1305895250
+    Path: event:/SFX/Store/Store_Buy
+  StoreError:
+    Guid:
+      Data1: 1321732353
+      Data2: 1255999471
+      Data3: 910903707
+      Data4: -788988743
+    Path: event:/SFX/Store/Store_Error
+  StoreTab:
+    Guid:
+      Data1: 1900927923
+      Data2: 1105077597
+      Data3: 1287606167
+      Data4: 1555675029
+    Path: event:/SFX/Store/Store_Tab
+  StoreOpen:
+    Guid:
+      Data1: -1076595165
+      Data2: 1252724213
+      Data3: -84850536
+      Data4: 696101717
+    Path: event:/SFX/Store/Store_Open
