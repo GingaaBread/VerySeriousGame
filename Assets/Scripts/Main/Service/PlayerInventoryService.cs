@@ -44,14 +44,6 @@ namespace Main.Service
             Debug.Log($"Collected 1x {item.ItemName}");
         }
 
-        public void Remove(Dictionary<ItemSo, int> items)
-        {
-            foreach (var (item, amount) in items)
-            {
-                Remove(item, amount);
-            }
-        }
-
         public int MaximumOfRequired(ItemSo item, int required)
         {
             if (required >= 0)
@@ -73,7 +65,7 @@ namespace Main.Service
             return true;
         }
 
-        private bool CanRemove(ItemSo item, int amount)
+        public bool CanRemove(ItemSo item, int amount)
         {
             if (amount < 0)
                 return false;
@@ -82,7 +74,15 @@ namespace Main.Service
                    && currentAmount >= amount;
         }
 
-        private void Remove(ItemSo item, int amount)
+        public void Remove(Dictionary<ItemSo, int> items)
+        {
+            foreach (var (item, amount) in items)
+            {
+                Remove(item, amount);
+            }
+        }
+
+        public void Remove(ItemSo item, int amount)
         {
             if (!_playerInventory.ItemsInInventory.ContainsKey(item))
             {
