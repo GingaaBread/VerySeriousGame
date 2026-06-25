@@ -1,6 +1,8 @@
 using System.Collections;
+using Audio;
 using Lean.Pool;
 using Main.Entity;
+using Main.Mono.Serialisation;
 using Main.Service;
 using Main.View;
 using UnityEngine;
@@ -10,6 +12,10 @@ using VContainer;
 
 namespace Main.Mono.Collected_Items
 {
+    /// <summary>
+    ///     Important: the UniqueGameId disallows pooling
+    /// </summary>
+    [RequireComponent(typeof(UniqueGameId))]
     public class Collectable : MonoBehaviour
     {
         [SerializeField] private float _sturdiness = 50;
@@ -20,14 +26,17 @@ namespace Main.Mono.Collected_Items
         [Inject] private readonly DrillService _drillService;
         [Inject] private readonly PlayerInventoryService _playerInventoryService;
         [Inject] private readonly PlayerStatService _playerStatService;
-
+        [Inject] private readonly SerialisationService _serialisationService;
         private float _currentSturdiness;
         private HealthBarView _healthBar;
+
+        private UniqueGameId _id;
         private float _initialSturdiness;
         private Coroutine _miningRoutine;
 
         private void Awake()
         {
+            _id = GetComponent<UniqueGameId>();
             _currentSturdiness = _sturdiness;
             _initialSturdiness = _sturdiness;
         }
@@ -99,11 +108,11 @@ namespace Main.Mono.Collected_Items
         {
             var damage = _playerStatService.CurrentMiningStrength();
             _currentSturdiness -= damage;
-            
-            Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.DrillHitResource);
+
+            AudioManager.Instance.PlayOneShot(AudioRegistry.Events.DrillHitResource);
 
             IndicatorManager.Instance.RequireAt(damage + string.Empty, transform.position + Vector3.up * 3);
-            _healthBar.UpdatePercentage(GetCurrentPercentage());
+            if (_healthBar != null) _healthBar.UpdatePercentage(GetCurrentPercentage());
 
             _onHit?.Invoke();
         }
@@ -112,8 +121,9 @@ namespace Main.Mono.Collected_Items
         {
             Debug.Log($"Destroyed {name}. Now collecting the item yield.");
             _playerInventoryService.Collect(_itemYield);
-            
-            Audio.AudioManager.Instance.PlayOneShot3D(AudioRegistry.Events.DrillDestroyResource, transform.position);
+            _serialisationService.MarkAsDestroyed(_id.Identifier);
+
+            AudioManager.Instance.PlayOneShot3D(AudioRegistry.Events.DrillDestroyResource, transform.position);
 
             IndicatorManager.Instance.RequireAt("BAM!", transform.position + Vector3.up * 3);
             ClearHealthBar();

@@ -17,6 +17,7 @@ namespace Utility.Scopes
             builder.RegisterEntryPoint<DrillService>().AsSelf();
             builder.RegisterEntryPoint<UpgradeService>().AsSelf();
 
+            builder.Register<SerialisationService>(Lifetime.Singleton);
             builder.Register<DrillActivationMediator>(Lifetime.Singleton);
             builder.Register<InteractionService>(Lifetime.Singleton);
 
