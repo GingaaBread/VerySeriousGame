@@ -10,6 +10,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Utility;
 using VContainer;
+using Audio;
 
 namespace Main.View.Shop
 {
@@ -35,13 +36,22 @@ namespace Main.View.Shop
         private UpgradeSo _currentlySelectedUpgrade;
         private ShopkeeperStock _shopkeeperStock;
         private List<UpgradeSo> _upgrades;
+        private bool _isShopOpen;
 
         public void TryBuyCurrent()
         {
             if (_currentlySelectedItem == null || _playerInventoryService.InventoryIsFull() ||
+                !_playerInventoryService.CanRemove(_currentlySelectedItem.Cost)) 
+            {
+                AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreError);
+                return;
+            }
+            
+            if (_currentlySelectedItem == null || _playerInventoryService.InventoryIsFull() ||
                 !_playerInventoryService.CanRemove(_currentlySelectedItem.Cost)) return;
             _playerInventoryService.Collect(_currentlySelectedItem.Item);
             _playerInventoryService.Remove(_currentlySelectedItem.Cost);
+            AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreBuy);
             Select(_currentlySelectedItem); // <- could be unavailable  now
         }
 
@@ -49,6 +59,8 @@ namespace Main.View.Shop
         {
             if (_currentlySelectedUpgrade == null) return;
             _upgradeService.Purchase(_currentlySelectedUpgrade);
+            
+            AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreBuy);
             Select(_currentlySelectedUpgrade); // <- could be unavailable for purchase now
         }
 
@@ -61,6 +73,9 @@ namespace Main.View.Shop
 
         public void Select(UpgradeSo upgrade)
         {
+            if (_currentlySelectedUpgrade != upgrade)
+                AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreTab);
+            
             _currentlySelectedUpgrade = _upgrades.FirstOrDefault(e => e == upgrade);
             _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
             _detailResourceInstances.Clear();
@@ -95,6 +110,8 @@ namespace Main.View.Shop
         public void Select(ItemSo renderedItemSoldByPlayer, ItemSo renderedItemGivenToPlayer,
             int renderedGivenAmount)
         {
+            AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreTab);
+            
             _currentlySelectedItemToSell = renderedItemSoldByPlayer;
             _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
             _detailResourceInstances.Clear();
@@ -114,6 +131,8 @@ namespace Main.View.Shop
 
         public void Select(ShopkeeperStock.SoldItem soldItem)
         {
+            if (_currentlySelectedItem != soldItem)
+                AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreTab);
             _currentlySelectedItem = _shopkeeperStock.SoldItems.FirstOrDefault(e => e == soldItem);
             _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
             _detailResourceInstances.Clear();
@@ -217,6 +236,7 @@ namespace Main.View.Shop
 
             _container.SetActive(false);
             _onClose?.Invoke();
+            _isShopOpen = false;
         }
 
         private void Render()
@@ -224,6 +244,12 @@ namespace Main.View.Shop
             InputManager.Instance.PushUI();
             _container.SetActive(true);
             DespawnAll();
+            if (!_isShopOpen)
+            {
+                AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreOpen);
+                _isShopOpen = true;
+            }
+            else AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreTab);
         }
 
         private void DespawnAll()

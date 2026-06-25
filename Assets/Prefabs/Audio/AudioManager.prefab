@@ -100,6 +100,20 @@ MonoBehaviour:
       Data3: -589174903
       Data4: -1810314158
     Path: event:/Music/Intro
+  AmbienceMines:
+    Guid:
+      Data1: -1222135761
+      Data2: 1165901987
+      Data3: -953515845
+      Data4: -1698312391
+    Path: event:/Ambience/Mines
+  AmbienceSurface:
+    Guid:
+      Data1: 406513309
+      Data2: 1224607373
+      Data3: -899893601
+      Data4: -922154088
+    Path: event:/Ambience/Surface
   DrillDrilling:
     Guid:
       Data1: 694581547
@@ -149,7 +163,7 @@ MonoBehaviour:
       Data3: 910903707
       Data4: -788988743
     Path: event:/SFX/Store/Store_Error
-  Store_Tab:
+  StoreTab:
     Guid:
       Data1: 1900927923
       Data2: 1105077597
