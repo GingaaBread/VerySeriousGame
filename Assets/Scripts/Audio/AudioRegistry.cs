@@ -9,8 +9,7 @@ public class AudioRegistry : MonoBehaviour
     public EventReference MusicTest;
     
     [Header("Ambience")]
-    public EventReference AmbienceMines;
-    public EventReference AmbienceSurface;
+    public EventReference WorldAmbience;
     
     [Header("SFX")]
     public EventReference DrillDrilling;
