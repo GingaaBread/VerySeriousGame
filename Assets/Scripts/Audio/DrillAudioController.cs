@@ -1,3 +1,4 @@
+using System.Collections;
 using FMOD.Studio;
 using Main.Service;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Audio
 
         private void OnEnable()
         {
-            _drillActivationMediator.OnActivationChange += UpdateFmodDrill;
+            StartCoroutine(WaitForService());
         }
 
         private void OnDisable()
@@ -20,6 +21,12 @@ namespace Audio
             _drillActivationMediator.OnActivationChange -= UpdateFmodDrill;
             _drillInstance.stop(STOP_MODE.IMMEDIATE);
             _drillInstance.release();
+        }
+
+        private IEnumerator WaitForService()
+        {
+            yield return new WaitUntil(() => _drillActivationMediator != null);
+            _drillActivationMediator.OnActivationChange += UpdateFmodDrill;
         }
 
         private void UpdateFmodDrill(bool drillIsActive)

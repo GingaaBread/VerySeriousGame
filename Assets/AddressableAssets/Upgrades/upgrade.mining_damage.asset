@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UpgradeName>k__BackingField: Sharpness
   <Description>k__BackingField: Increases the damage your drill deals to objects.
-  <Icon>k__BackingField: {fileID: 21300000, guid: 23e38fd2084949fbae7116a1e31e76bc, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: e7daa2ab033290e44aa424d39d3e69ca, type: 3}
   <Cost>k__BackingField:
     _serializedList:
     - Key: {fileID: 11400000, guid: fd1e881ec7edfa748ae194d27dbbd411, type: 2}
       Value: 5
+  <Effects>k__BackingField: 03000000

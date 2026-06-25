@@ -1,5 +1,4 @@
-﻿using Main.Mono.Collected_Items;
-using UnityEngine;
+﻿using Audio;
 using VContainer;
 using VContainer.Unity;
 
@@ -9,13 +8,7 @@ namespace Utility.Scopes
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterBuildCallback(resolver =>
-            {
-                foreach (var collectable in FindObjectsByType<Collectable>(FindObjectsSortMode.None))
-                {
-                    resolver.Inject(collectable);
-                }
-            });
+            builder.RegisterComponentInHierarchy<DrillAudioController>();
         }
     }
 }

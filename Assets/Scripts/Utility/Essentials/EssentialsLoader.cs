@@ -1,31 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
-using VContainer;
-using VContainer.Unity;
+using UnityEngine.Events;
 
 namespace Utility.Essentials
 {
     public class EssentialsLoader : MonoBehaviour
     {
         private static bool _isLoading;
-        [Inject] private IObjectResolver _resolver;
+        [SerializeField] private UnityEvent _onExistsAlready;
 
         private async void Awake()
         {
-            if (SpawnedEssentials.Exists || _isLoading) return;
+            if (SpawnedEssentials.Exists || _isLoading)
+            {
+                _onExistsAlready?.Invoke();
+                return;
+            }
+
             _isLoading = true;
 
             var handle = Addressables.InstantiateAsync("spawned-essentials");
-            var essentials = await handle.Task;
-            var injected = essentials.GetComponent<SpawnedEssentials>().Injected;
-
-            foreach (var i in injected)
-            {
-                Debug.Log("OKOKO");
-                _resolver.InjectGameObject(i);
-            }
-
-            _resolver.InjectGameObject(essentials);
+            await handle.Task;
         }
     }
 }

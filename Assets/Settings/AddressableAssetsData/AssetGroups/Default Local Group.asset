@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: d9f94a62e192e954e97db5dcf92a46d5
   m_SerializeEntries:
+  - m_GUID: 171c139b89accac4c94477cb56ddfb8f
+    m_Address: Assets/AddressableAssets/Transitions/transition.exit.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - transition
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2bbfda6ccb986cb4a9813909b21d5ca0
     m_Address: Assets/AddressableAssets/Upgrades/upgrade.test.asset
     m_ReadOnly: 0
@@ -25,6 +31,18 @@ MonoBehaviour:
     m_Address: spawned-essentials
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4685f5b6e1f29fa46ac2a5d2c88119e9
+    m_Address: Assets/AddressableAssets/Transitions/transition.sleep.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - transition
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64dfd541114f1f5408151a1d1de0629e
+    m_Address: Assets/AddressableAssets/Transitions/transition.surface_to_mine.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - transition
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7d0d3985cba8d224e9291eff45796490
     m_Address: Assets/AddressableAssets/Upgrades/upgrade.inventory_size.asset
@@ -60,6 +78,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - upgrade
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd1e881ec7edfa748ae194d27dbbd411
+    m_Address: currency
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 12211de40204a24408267a06573aa986, type: 2}
