@@ -30,6 +30,7 @@ namespace Main.View.Shop
 
         public void Select(UpgradeSo upgrade)
         {
+            Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreTab);
             _currentlySelected = _upgrades.FirstOrDefault(e => e == upgrade);
             if (_currentlySelected == null) return;
 
@@ -62,6 +63,7 @@ namespace Main.View.Shop
 
         private void Render()
         {
+            Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreOpen);
             InputManager.Instance.PushUI();
             _container.SetActive(true);
             DespawnAll();

@@ -13,6 +13,12 @@ public class AudioRegistry : MonoBehaviour
     public EventReference DrillHitDirt;
     public EventReference DrillHitResource;
     public EventReference DrillDestroyResource;
+    public EventReference ItemPickup;
+    public EventReference StoreBuy;
+    public EventReference StoreError;
+    public EventReference StoreTab;
+    public EventReference StoreOpen;
+    
 
     private void Awake()
     {

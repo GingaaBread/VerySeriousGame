@@ -28,12 +28,14 @@ namespace Main.Service
             if (!_playerInventoryService.CanRemove(upgrade.Cost))
             {
                 Debug.Log("Ignoring the purchase request because the cost cannot be afforded");
+                Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreError);
                 return;
             }
 
             if (!_upgradeStatus.PurchasedUpgrades.TryAdd(upgrade, 1)) _upgradeStatus.PurchasedUpgrades[upgrade]++;
 
             _playerInventoryService.Remove(upgrade.Cost);
+            Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreBuy);
             Debug.Log($"Purchased upgrade '{upgrade}'");
         }
 
