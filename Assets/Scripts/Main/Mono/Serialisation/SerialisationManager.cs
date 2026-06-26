@@ -25,6 +25,7 @@ namespace Main.Mono.Serialisation
         {
             var destroyed = _serialisationService.GetAllDestroyed();
             var objs = FindObjectsByType<UniqueGameId>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            _serialisationService.RegisterTotalAmount(objs.Length);
 
             foreach (var obj in objs)
             {
