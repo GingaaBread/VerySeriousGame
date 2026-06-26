@@ -26,6 +26,7 @@ namespace Audio
         public EventReference Transition;
         public EventReference Recharge;
         public EventReference VoiceLines;
+        public EventReference WorldMusic;
 
 
         private void Awake()

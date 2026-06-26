@@ -7,6 +7,7 @@ using Audio;
 public class AmbienceManager : MonoBehaviour
 {
     private EventInstance _ambienceInstance;
+    private EventInstance _musicInstance;
     private EventInstance _reverbInstance;
     private string _currentScene;
     [SerializeField] private EventReference _mineReverbSnapshot;
@@ -15,6 +16,7 @@ public class AmbienceManager : MonoBehaviour
     {
         // Start the ambience loop
         _ambienceInstance = AudioManager.Instance.PlayLoop(AudioRegistry.Events.AmbienceHandler);
+        _musicInstance = AudioManager.Instance.PlayLoop(AudioRegistry.Events.WorldMusic);
         _reverbInstance = RuntimeManager.CreateInstance(_mineReverbSnapshot);
         
         // Subscribe to scene changes
@@ -35,6 +37,7 @@ public class AmbienceManager : MonoBehaviour
         float state = isSurface ? 1f : 0f;
         
         _ambienceInstance.setParameterByName("WorldState", state);
+        _musicInstance.setParameterByName("WorldState", state);
         
         if (!isSurface)
         {
@@ -51,7 +54,14 @@ public class AmbienceManager : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        
         _ambienceInstance.stop(STOP_MODE.ALLOWFADEOUT);
         _ambienceInstance.release();
+        
+        _musicInstance.stop(STOP_MODE.ALLOWFADEOUT);
+        _musicInstance.release();
+        
+        _reverbInstance.stop(STOP_MODE.IMMEDIATE);
+        _reverbInstance.release();
     }
 }
