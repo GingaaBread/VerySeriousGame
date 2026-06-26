@@ -21,6 +21,8 @@ public class AudioRegistry : MonoBehaviour
     public EventReference StoreError;
     public EventReference StoreTab;
     public EventReference StoreOpen;
+    public EventReference Footsteps;
+    public EventReference Transition;
     
     
 

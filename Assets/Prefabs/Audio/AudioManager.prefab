@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6451735092116011861}
   - component: {fileID: 1452946778604519183}
   - component: {fileID: 3218132838089612162}
+  - component: {fileID: 2755956959983624662}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -60,6 +61,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1169407a1248cb54292938c1dd8735f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2755956959983624662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956704079097570021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9dc22760331d844b89a705808dc7c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4074577746938425096
@@ -183,3 +196,17 @@ MonoBehaviour:
       Data3: -84850536
       Data4: 696101717
     Path: event:/SFX/Store/Store_Open
+  Footsteps:
+    Guid:
+      Data1: 1260581558
+      Data2: 1158569607
+      Data3: 456937900
+      Data4: 261184696
+    Path: event:/SFX/Footsteps
+  Transition:
+    Guid:
+      Data1: -1144705021
+      Data2: 1260431315
+      Data3: 740180925
+      Data4: -1992429671
+    Path: event:/SFX/Map_Transition

@@ -95,5 +95,9 @@ namespace Main.Mono.Player
             _currentMovementData = Vector2.zero;
             _rigidbody2D.linearVelocity = Vector2.zero;
         }
+        public void PlayFootstepSound()
+        {
+            Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.Footsteps);
+        }
     }
 }
