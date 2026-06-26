@@ -16,4 +16,6 @@ MonoBehaviour:
   <ItemDescription>k__BackingField: The pattern in this mineral reminded the first
     settlers of a tear.
   <ItemSprite>k__BackingField: {fileID: 21300000, guid: d290f6c9f3fced2408e64cb57373a876, type: 3}
-  <MoneyWorth>k__BackingField: 1
+  <MoneyWorth>k__BackingField: 3
+  <IsConsumable>k__BackingField: 0
+  <HasEffectOnPurchase>k__BackingField: 0

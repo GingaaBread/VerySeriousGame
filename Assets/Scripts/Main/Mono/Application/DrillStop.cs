@@ -17,7 +17,7 @@ namespace Main.Mono.Application
         private IEnumerator WaitForService()
         {
             yield return new WaitUntil(() => _drillService != null);
-            if (_drillService.IsActivated()) _drillService.ToggleActivity();
+            if (_drillService.IsActivated()) _drillService.StopActivation();
         }
     }
 }

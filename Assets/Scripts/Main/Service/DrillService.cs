@@ -1,9 +1,12 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using Main.Entity;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
+
+// add this
 
 namespace Main.Service
 {
@@ -12,7 +15,9 @@ namespace Main.Service
     {
         [Inject] private readonly BatteryService _batteryService;
         [Inject] private readonly DrillActivationMediator _drillActivationMediator;
+
         private readonly DrillStatus _drillStatus = new();
+        private bool _batteryLossCooldown;
 
         public void Dispose()
         {
@@ -34,16 +39,24 @@ namespace Main.Service
 
             _drillStatus.IsActivated = !_drillStatus.IsActivated;
             _drillActivationMediator.RaiseActivationChange(_drillStatus.IsActivated);
-            Debug.Log($"Toggled the drill. Is it now active? : {_drillStatus.IsActivated}");
+
+            StopIfEmpty();
         }
 
         public bool IsActivated() => _drillStatus.IsActivated;
 
-        private void StopActivation()
+        public void StopActivation()
         {
             Debug.Log("Stopping activation");
             _drillStatus.IsActivated = false;
             _drillActivationMediator.RaiseActivationChange(false);
+        }
+
+        private async void StopIfEmpty()
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(0.3));
+            Debug.Log("Stopping if empty");
+            if (_batteryService.BatteryIsEmpty()) StopActivation();
         }
     }
 }

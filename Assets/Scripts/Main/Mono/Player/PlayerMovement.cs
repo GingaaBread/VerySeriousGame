@@ -73,6 +73,7 @@ namespace Main.Mono.Player
 
         private void UpdateDrillAnimator(bool isDrilling)
         {
+            Debug.Log($"Updating drill animator: {isDrilling}");
             _animator.SetBool(IS_DRILLING_ID, isDrilling);
         }
 
@@ -96,9 +97,10 @@ namespace Main.Mono.Player
             _currentMovementData = Vector2.zero;
             _rigidbody2D.linearVelocity = Vector2.zero;
         }
+
         public void PlayFootstepSound()
         {
-            Audio.AudioManager.Instance.PlayOneShot(AudioRegistry.Events.Footsteps);
+            AudioManager.Instance.PlayOneShot(AudioRegistry.Events.Footsteps);
         }
     }
 }
