@@ -48,8 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterVolume: 1
-  musicVolume: 1
-  sfxVolume: 1
   ambienceVolume: 1
 --- !u!114 &3218132838089612162
 MonoBehaviour:
@@ -231,3 +229,10 @@ MonoBehaviour:
       Data3: 1726110087
       Data4: 651226667
     Path: event:/Music/WorldMusic
+  Dialogue:
+    Guid:
+      Data1: -1921749934
+      Data2: 1335338613
+      Data3: -10679874
+      Data4: -341373260
+    Path: event:/SFX/Dialogue

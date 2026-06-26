@@ -4,6 +4,7 @@ using Main.Mono.Lore;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Audio;
 
 namespace Main.View
 {
@@ -115,6 +116,11 @@ namespace Main.View
                     IndicateIn();
 
                     yield break;
+                }
+                
+                if (characterCounter % 4 == 0)
+                {
+                    AudioManager.Instance.PlayOneShot(AudioRegistry.Events.Dialogue);
                 }
 
                 characterCounter++;
