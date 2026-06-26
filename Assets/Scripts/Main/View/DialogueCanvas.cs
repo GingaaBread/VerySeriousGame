@@ -35,6 +35,8 @@ namespace Main.View
 
         public void TryProceed()
         {
+            AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreTab);
+            
             if (!_waitingForProceed) return;
             _waitingForProceed = false;
             ShowNextLine();
