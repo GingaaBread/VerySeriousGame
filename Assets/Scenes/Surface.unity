@@ -2931,7 +2931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4576459596501855870, guid: 4dbbc06f5aa21264fa38ed55b50a91f7, type: 3}
       propertyPath: orthographic size
-      value: 11.25
+      value: 11.15
       objectReference: {fileID: 0}
     - target: {fileID: 4576459596501855870, guid: 4dbbc06f5aa21264fa38ed55b50a91f7, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -6110,7 +6110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
       propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
       propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -6118,6 +6118,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
       propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
@@ -6129,11 +6133,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7693707277447938283}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2755956959983624662, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
+    - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
       propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
       propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
@@ -6145,6 +6157,10 @@ PrefabInstance:
       value: Load
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PlayTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
       propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Main.Mono.Player.PlayerMovement, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -6153,11 +6169,19 @@ PrefabInstance:
       value: Main.Mono.Surface.SceneChange, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: PlaySoundOnTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
       propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
       propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829939594070106240, guid: 0e5bdeaca6bd4bb428244404ecc0721b, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

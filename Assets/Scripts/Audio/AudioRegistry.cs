@@ -9,8 +9,7 @@ public class AudioRegistry : MonoBehaviour
     public EventReference MusicTest;
     
     [Header("Ambience")]
-    public EventReference AmbienceMines;
-    public EventReference AmbienceSurface;
+    public EventReference WorldAmbience;
     
     [Header("SFX")]
     public EventReference DrillDrilling;
@@ -22,6 +21,8 @@ public class AudioRegistry : MonoBehaviour
     public EventReference StoreError;
     public EventReference StoreTab;
     public EventReference StoreOpen;
+    public EventReference Footsteps;
+    public EventReference Transition;
     
     
 
