@@ -37,20 +37,17 @@ namespace Audio
             _ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
         }
 
-        private void Start()
-        {
-            if (AudioRegistry.Events != null && !AudioRegistry.Events.MusicTest.IsNull)
-                PlayMusic(AudioRegistry.Events.MusicTest);
-            else
-                Debug.LogWarning("AudioManager: Could not find an In Game Theme event in the AudioRegistry!");
-        }
-
         private void Update()
         {
             if (_masterBus.isValid()) _masterBus.setVolume(masterVolume);
             if (_musicBus.isValid()) _musicBus.setVolume(musicVolume);
             if (_sfxBus.isValid()) _sfxBus.setVolume(sfxVolume);
             if (_ambienceBus.isValid()) _ambienceBus.setVolume(ambienceVolume);
+        }
+
+        private void OnDestroy()
+        {
+            StopMusic();
         }
 
         //Plays any FMOD music event globally, automatically stopping and cleaning up the previous track.
@@ -88,18 +85,13 @@ namespace Audio
         {
             if (!oneShotEvent.IsNull) RuntimeManager.PlayOneShot(oneShotEvent, worldPosition);
         }
-        
+
         public EventInstance PlayLoop(EventReference loopEvent)
         {
-            EventInstance instance = RuntimeManager.CreateInstance(loopEvent);
+            var instance = RuntimeManager.CreateInstance(loopEvent);
             instance.start();
             instance.release();
             return instance;
-        }
-        
-        private void OnDestroy()
-        {
-            StopMusic();
         }
     }
 }
