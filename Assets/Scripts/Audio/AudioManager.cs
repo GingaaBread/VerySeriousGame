@@ -9,9 +9,6 @@ namespace Audio
         [Header("Volumes")]
         [Range(0f, 1f)] [SerializeField] private float masterVolume = 1f;
 
-        [Range(0f, 1f)] [SerializeField] private float ambienceVolume = 1f;
-        private Bus _ambienceBus;
-
         private EventInstance _currentMusicInstance;
 
         // FMOD Mixing Board Bus Channels
@@ -35,13 +32,11 @@ namespace Audio
             _masterBus = RuntimeManager.GetBus("bus:/");
             _musicBus = RuntimeManager.GetBus("bus:/Music");
             _sfxBus = RuntimeManager.GetBus("bus:/SFX");
-            _ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
-            
+
             Debug.Log($"Music Bus Valid: {_musicBus.isValid()}");
             Debug.Log($"SFX Bus Valid: {_sfxBus.isValid()}");
 
             if (_masterBus.isValid()) _masterBus.setVolume(masterVolume);
-            if (_ambienceBus.isValid()) _ambienceBus.setVolume(ambienceVolume);
         }
 
         private void OnDestroy()
