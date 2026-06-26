@@ -224,3 +224,10 @@ MonoBehaviour:
       Data3: -1270556499
       Data4: -414723774
     Path: event:/SFX/Funny/Voice_Lines
+  WorldMusic:
+    Guid:
+      Data1: 1239932590
+      Data2: 1277691436
+      Data3: 1726110087
+      Data4: 651226667
+    Path: event:/Music/WorldMusic
