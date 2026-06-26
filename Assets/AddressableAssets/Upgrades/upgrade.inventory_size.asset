@@ -18,5 +18,5 @@ MonoBehaviour:
   <Cost>k__BackingField:
     _serializedList:
     - Key: {fileID: 11400000, guid: fd1e881ec7edfa748ae194d27dbbd411, type: 2}
-      Value: 5
+      Value: 1
   <Effects>k__BackingField: 02000000
