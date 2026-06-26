@@ -36,6 +36,9 @@ namespace Audio
             _musicBus = RuntimeManager.GetBus("bus:/Music");
             _sfxBus = RuntimeManager.GetBus("bus:/SFX");
             _ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
+            
+            Debug.Log($"Music Bus Valid: {_musicBus.isValid()}");
+            Debug.Log($"SFX Bus Valid: {_sfxBus.isValid()}");
 
             if (_masterBus.isValid()) _masterBus.setVolume(masterVolume);
             if (_ambienceBus.isValid()) _ambienceBus.setVolume(ambienceVolume);
