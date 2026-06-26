@@ -9,8 +9,6 @@ namespace Audio
         [Header("Volumes")]
         [Range(0f, 1f)] [SerializeField] private float masterVolume = 1f;
 
-        [Range(0f, 1f)] [SerializeField] private float musicVolume = 1f;
-        [Range(0f, 1f)] [SerializeField] private float sfxVolume = 1f;
         [Range(0f, 1f)] [SerializeField] private float ambienceVolume = 1f;
         private Bus _ambienceBus;
 
@@ -19,7 +17,10 @@ namespace Audio
         // FMOD Mixing Board Bus Channels
         private Bus _masterBus;
         private Bus _musicBus;
+
+        private float _musicVolume = 1f;
         private Bus _sfxBus;
+        private float _sfxVolume = 1f;
         public static AudioManager Instance { get; private set; }
 
         private void Awake()
@@ -35,19 +36,26 @@ namespace Audio
             _musicBus = RuntimeManager.GetBus("bus:/Music");
             _sfxBus = RuntimeManager.GetBus("bus:/SFX");
             _ambienceBus = RuntimeManager.GetBus("bus:/Ambience");
-        }
 
-        private void Update()
-        {
             if (_masterBus.isValid()) _masterBus.setVolume(masterVolume);
-            if (_musicBus.isValid()) _musicBus.setVolume(musicVolume);
-            if (_sfxBus.isValid()) _sfxBus.setVolume(sfxVolume);
             if (_ambienceBus.isValid()) _ambienceBus.setVolume(ambienceVolume);
         }
 
         private void OnDestroy()
         {
             StopMusic();
+        }
+
+        public void MusicVolume(float volume)
+        {
+            _musicVolume = volume;
+            if (_musicBus.isValid()) _musicBus.setVolume(_musicVolume);
+        }
+
+        public void SoundsVolume(float volume)
+        {
+            _sfxVolume = volume;
+            if (_sfxBus.isValid()) _sfxBus.setVolume(_sfxVolume);
         }
 
         //Plays any FMOD music event globally, automatically stopping and cleaning up the previous track.
