@@ -69,6 +69,22 @@ PrefabInstance:
       propertyPath: WorldAmbience.Path
       value: event:/Ambience/Mines
       objectReference: {fileID: 0}
+    - target: {fileID: 6023316956666804750, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
+      propertyPath: WorldAmbience.Guid.Data1
+      value: 187823095
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023316956666804750, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
+      propertyPath: WorldAmbience.Guid.Data2
+      value: 1320716330
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023316956666804750, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
+      propertyPath: WorldAmbience.Guid.Data3
+      value: -534614910
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023316956666804750, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
+      propertyPath: WorldAmbience.Guid.Data4
+      value: -1386553774
+      objectReference: {fileID: 0}
     - target: {fileID: 6451735092116011861, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -9,7 +9,7 @@ namespace Audio
 
 
         [Header("Ambience")]
-        public EventReference WorldAmbience;
+        public EventReference AmbienceHandler;
 
         [Header("SFX")]
         public EventReference DrillDrilling;
