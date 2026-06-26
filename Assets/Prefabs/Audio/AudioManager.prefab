@@ -63,6 +63,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1169407a1248cb54292938c1dd8735f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mineReverbSnapshot:
+    Guid:
+      Data1: 774155018
+      Data2: 1172648433
+      Data3: -1253622134
+      Data4: 1017839023
+    Path: snapshot:/MineReverb
 --- !u!114 &2755956959983624662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,20 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5fd77717591054d832767bb1fbc7cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicTest:
-    Guid:
-      Data1: 1199419566
-      Data2: 1289692191
-      Data3: -589174903
-      Data4: -1810314158
-    Path: event:/Music/Intro
-  WorldAmbience:
+  AmbienceHandler:
     Guid:
       Data1: -1222135761
       Data2: 1165901987
       Data3: -953515845
       Data4: -1698312391
-    Path: event:/Ambience/Mines
+    Path: event:/Ambience/WorldAmbience
   DrillDrilling:
     Guid:
       Data1: 694581547
@@ -210,13 +210,6 @@ MonoBehaviour:
       Data3: 740180925
       Data4: -1992429671
     Path: event:/SFX/Map_Transition
-  VoiceLines:
-    Guid:
-      Data1: -1434917312
-      Data2: 1128281549
-      Data3: -1270556499
-      Data4: -414723774
-    Path: event:/SFX/Funny/Voice_Lines
   Recharge:
     Guid:
       Data1: 552226720
@@ -224,3 +217,10 @@ MonoBehaviour:
       Data3: -926348924
       Data4: -397012512
     Path: event:/SFX/Recharge
+  VoiceLines:
+    Guid:
+      Data1: -1434917312
+      Data2: 1128281549
+      Data3: -1270556499
+      Data4: -414723774
+    Path: event:/SFX/Funny/Voice_Lines
