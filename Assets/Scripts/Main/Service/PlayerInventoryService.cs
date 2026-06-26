@@ -23,10 +23,16 @@ namespace Main.Service
         public event Action<ItemSo> OnItemCollected;
         public event Action<ItemSo, int> OnConsumableUpdated;
         public event Action<int> OnCurrencyUpdated;
+        public event Action<int, int> OnInventoryCapUpdated;
+
+        public (int, int) GetCurrentCap() =>
+            (_playerInventory.CurrentInventorySize, _playerInventory.CurrentInventoryLimit);
 
         public void IncrementCarryLimit()
         {
             _playerInventory.CurrentInventoryLimit++;
+            OnInventoryCapUpdated?.Invoke(_playerInventory.CurrentInventorySize,
+                _playerInventory.CurrentInventoryLimit);
             Debug.Log($"Increased the carry limit. It is now: {_playerInventory.CurrentInventoryLimit}");
         }
 
@@ -37,8 +43,16 @@ namespace Main.Service
 
             if (!_playerInventory.ItemsInInventory.TryAdd(item, amount)) _playerInventory.ItemsInInventory[item]++;
 
-            if (item == _currency) OnCurrencyUpdated?.Invoke(_playerInventory.ItemsInInventory[item]);
-            else _playerInventory.CurrentInventorySize++;
+            if (item == _currency)
+            {
+                OnCurrencyUpdated?.Invoke(_playerInventory.ItemsInInventory[item]);
+            }
+            else
+            {
+                _playerInventory.CurrentInventorySize++;
+                OnInventoryCapUpdated?.Invoke(_playerInventory.CurrentInventorySize,
+                    _playerInventory.CurrentInventoryLimit);
+            }
 
             if (item.IsConsumable) OnConsumableUpdated?.Invoke(item, _playerInventory.ItemsInInventory[item]);
 
@@ -107,8 +121,15 @@ namespace Main.Service
             }
 
             if (item == _currency)
+            {
                 OnCurrencyUpdated?.Invoke(_playerInventory.ItemsInInventory.GetValueOrDefault(item, 0));
-            else _playerInventory.CurrentInventorySize -= amount;
+            }
+            else
+            {
+                _playerInventory.CurrentInventorySize -= amount;
+                OnInventoryCapUpdated?.Invoke(_playerInventory.CurrentInventorySize,
+                    _playerInventory.CurrentInventoryLimit);
+            }
         }
 
         public int CurrentCurrency() => _playerInventory.ItemsInInventory.GetValueOrDefault(_currency, 0);
