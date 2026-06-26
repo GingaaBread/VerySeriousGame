@@ -29,6 +29,8 @@ namespace Main.View.Shop
         [SerializeField] private UnityEvent _onClose;
         private readonly List<RequiredResourceView> _detailResourceInstances = new();
         [Inject] private readonly PlayerInventoryService _playerInventoryService;
+
+        [Inject] private readonly SerialisationService _serialisationService;
         private readonly List<ShopButton> _shopButtonInstances = new();
         [Inject] private readonly UpgradeService _upgradeService;
         private ShopkeeperStock.SoldItem _currentlySelectedItem;
@@ -47,11 +49,20 @@ namespace Main.View.Shop
                 return;
             }
 
-            if (_currentlySelectedItem == null || _playerInventoryService.InventoryIsFull() ||
-                !_playerInventoryService.CanRemove(_currentlySelectedItem.Cost)) return;
-            _playerInventoryService.Collect(_currentlySelectedItem.Item);
-            _playerInventoryService.Remove(_currentlySelectedItem.Cost);
             AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreBuy);
+
+            // Instant items are not actually added to the inventory
+            if (_currentlySelectedItem.Item.HasEffectOnPurchase)
+            {
+                // In the trial version, the only instant item respawns all rocks
+                _serialisationService.ResetAllDestroyed();
+            }
+            else
+            {
+                _playerInventoryService.Collect(_currentlySelectedItem.Item);
+                _playerInventoryService.Remove(_currentlySelectedItem.Cost);
+            }
+
             Select(_currentlySelectedItem); // <- could be unavailable  now
         }
 

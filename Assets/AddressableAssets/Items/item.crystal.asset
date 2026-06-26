@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: item.crystal
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Crystal
-  <ItemDescription>k__BackingField: A shining crystal that seems very valuable.
+  <ItemDescription>k__BackingField: A shining <color=#ECC081>crystal</color> that
+    seems very valuable.
   <ItemSprite>k__BackingField: {fileID: 21300000, guid: 62a643d41cbc29a4a82a6ff5eaccf722, type: 3}
   <MoneyWorth>k__BackingField: 3
   <IsConsumable>k__BackingField: 0

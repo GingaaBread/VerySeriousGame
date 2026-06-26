@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1207521089354913885, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 1987020370, guid: cdd4b9a3cb4ff594c8c17668ef338844, type: 3}
+    - target: {fileID: 1207521089354913885, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
+      propertyPath: UVModule.sprites.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: -1369108430, guid: cdd4b9a3cb4ff594c8c17668ef338844, type: 3}
+    - target: {fileID: 1207521089354913885, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
+      propertyPath: UVModule.sprites.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 1218080666, guid: cdd4b9a3cb4ff594c8c17668ef338844, type: 3}
+    - target: {fileID: 1207521089354913885, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
+      propertyPath: UVModule.sprites.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: -344537957, guid: cdd4b9a3cb4ff594c8c17668ef338844, type: 3}
     - target: {fileID: 1502633949250270640, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -72,6 +88,10 @@ PrefabInstance:
       propertyPath: _itemYield
       value: 
       objectReference: {fileID: 11400000, guid: b87eb5d071ab3714da4653ec479f3c41, type: 2}
+    - target: {fileID: 8223857210592889644, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
+      propertyPath: _sturdiness
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8446349109177293608, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
       propertyPath: <Identifier>k__BackingField
       value: 14c25fbc-a8ec-43d8-9b63-0f573003ea80

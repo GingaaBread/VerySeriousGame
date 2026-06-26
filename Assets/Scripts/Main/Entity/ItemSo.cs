@@ -15,5 +15,6 @@ namespace Main.Entity
 
         [field: SerializeField] public int MoneyWorth { get; private set; }
         [field: SerializeField] public bool IsConsumable { get; private set; }
+        [field: SerializeField] public bool HasEffectOnPurchase { get; private set; }
     }
 }

@@ -63,7 +63,7 @@ namespace Main.View.Shop
             DespawnAll();
 
             var instance = LeanPool.Spawn(_requiredResourcePrefab, _resourceContainer);
-            instance.Render(givenItem.ItemSprite, givenAmount + " x" + sellAmount, Color.white);
+            instance.Render(givenItem.ItemSprite, givenAmount + " (x" + sellAmount + ')', Color.white);
             _requiredResourceViews.Add(instance);
         }
 

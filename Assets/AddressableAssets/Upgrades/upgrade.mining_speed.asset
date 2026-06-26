@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: upgrade.mining_speed
   m_EditorClassIdentifier: 
   <UpgradeName>k__BackingField: Caffeinated
-  <Description>k__BackingField: Decreases the burst delay of your drill, allowing
-    you to drill faster.
+  <Description>k__BackingField: Decreases the <color=#A7605D>burst delay</color>
+    of your <color=#A7605D>drill</color><sprite=1>, allowing you to drill faster.
   <Icon>k__BackingField: {fileID: 21300000, guid: 66d54584b20e015448defef5d1af9040, type: 3}
   <Cost>k__BackingField:
     _serializedList:

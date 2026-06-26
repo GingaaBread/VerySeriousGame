@@ -621,6 +621,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5574335938958709946, guid: 4c6121d5890241e4fa90ea90f8466943, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fa7aa7244223f1f43a4af7439c733870, type: 3}
     - target: {fileID: 8042090794804120197, guid: 4c6121d5890241e4fa90ea90f8466943, type: 3}
       propertyPath: m_Name
       value: Upgrade Button
@@ -5936,8 +5940,20 @@ PrefabInstance:
       value: SHOPKEEPER
       objectReference: {fileID: 0}
     - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
+      propertyPath: <SoldItems>k__BackingField.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
+      propertyPath: <SoldItems>k__BackingField.Array.data[1].<Item>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: db44e423f0cb51441bae50cb79f09989, type: 2}
+    - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
       propertyPath: <SoldItems>k__BackingField.Array.data[0].<Cost>k__BackingField._serializedList.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
+      propertyPath: <SoldItems>k__BackingField.Array.data[1].<Cost>k__BackingField._serializedList.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
       propertyPath: <SoldItems>k__BackingField.Array.data[0].<Cost>k__BackingField._serializedList.Array.data[0].Key
@@ -5948,11 +5964,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7e3f749435c9f8a4ab192327ce5f6e08, type: 2}
     - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
+      propertyPath: <SoldItems>k__BackingField.Array.data[1].<Cost>k__BackingField._serializedList.Array.data[0].Key
+      value: 
+      objectReference: {fileID: 11400000, guid: fd1e881ec7edfa748ae194d27dbbd411, type: 2}
+    - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
+      propertyPath: <SoldItems>k__BackingField.Array.data[1].<Cost>k__BackingField._serializedList.Array.data[1].Key
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e3f749435c9f8a4ab192327ce5f6e08, type: 2}
+    - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
       propertyPath: <SoldItems>k__BackingField.Array.data[0].<Cost>k__BackingField._serializedList.Array.data[0].Value
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
       propertyPath: <SoldItems>k__BackingField.Array.data[0].<Cost>k__BackingField._serializedList.Array.data[1].Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
+      propertyPath: <SoldItems>k__BackingField.Array.data[1].<Cost>k__BackingField._serializedList.Array.data[0].Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769833111045077235, guid: d57471f3f351795419036afe7e47c673, type: 3}
+      propertyPath: <SoldItems>k__BackingField.Array.data[1].<Cost>k__BackingField._serializedList.Array.data[1].Value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5547590652478013351, guid: d57471f3f351795419036afe7e47c673, type: 3}
