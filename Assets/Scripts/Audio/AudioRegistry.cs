@@ -23,6 +23,8 @@ public class AudioRegistry : MonoBehaviour
     public EventReference StoreOpen;
     public EventReference Footsteps;
     public EventReference Transition;
+    public EventReference VoiceLines;
+    public EventReference Recharge;
     
     
 

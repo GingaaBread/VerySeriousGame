@@ -132,7 +132,7 @@ MonoBehaviour:
       Data2: 1165901987
       Data3: -953515845
       Data4: -1698312391
-    Path: event:/Ambience/World_Ambience
+    Path: event:/Ambience/Mines
   DrillDrilling:
     Guid:
       Data1: 694581547
@@ -210,3 +210,17 @@ MonoBehaviour:
       Data3: 740180925
       Data4: -1992429671
     Path: event:/SFX/Map_Transition
+  VoiceLines:
+    Guid:
+      Data1: -1434917312
+      Data2: 1128281549
+      Data3: -1270556499
+      Data4: -414723774
+    Path: event:/SFX/Funny/Voice_Lines
+  Recharge:
+    Guid:
+      Data1: 552226720
+      Data2: 1198837261
+      Data3: -926348924
+      Data4: -397012512
+    Path: event:/SFX/Recharge
