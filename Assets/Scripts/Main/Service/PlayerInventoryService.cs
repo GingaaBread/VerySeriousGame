@@ -67,8 +67,9 @@ namespace Main.Service
 
         public bool CanRemove(ItemSo item, int amount)
         {
-            if (amount < 0)
-                return false;
+            if (amount is 0) return true;
+
+            if (amount < 0) return false;
 
             return _playerInventory.ItemsInInventory.TryGetValue(item, out var currentAmount)
                    && currentAmount >= amount;

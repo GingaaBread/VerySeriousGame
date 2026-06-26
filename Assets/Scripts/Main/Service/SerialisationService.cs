@@ -19,5 +19,11 @@ namespace Main.Service
         }
 
         public List<string> GetAllDestroyed() => _serialisationStatus.DestroyedObjects;
+
+        public void ResetAllDestroyed()
+        {
+            Debug.Log("Clearing all objects that have been marked as destroyed");
+            _serialisationStatus.DestroyedObjects.Clear();
+        }
     }
 }

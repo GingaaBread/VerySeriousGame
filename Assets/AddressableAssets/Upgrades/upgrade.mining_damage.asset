@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: upgrade.mining_damage
   m_EditorClassIdentifier: 
   <UpgradeName>k__BackingField: Sharpness
-  <Description>k__BackingField: Increases the damage your drill deals to objects.
+  <Description>k__BackingField: Increases the <color=#A7605D>damage</color> your
+    <color=#A7605D>drill</color><sprite=1> deals to objects.
   <Icon>k__BackingField: {fileID: 21300000, guid: e7daa2ab033290e44aa424d39d3e69ca, type: 3}
   <Cost>k__BackingField:
     _serializedList:

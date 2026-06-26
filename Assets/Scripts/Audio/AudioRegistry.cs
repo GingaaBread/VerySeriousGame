@@ -1,43 +1,41 @@
-using UnityEngine;
 using FMODUnity;
+using UnityEngine;
 
-public class AudioRegistry : MonoBehaviour
+namespace Audio
 {
-    public static AudioRegistry Events;
-
-    [Header("Music")]
-    public EventReference MusicTest;
-    
-    [Header("Ambience")]
-    public EventReference WorldAmbience;
-    
-    [Header("SFX")]
-    public EventReference DrillDrilling;
-    public EventReference DrillHitDirt;
-    public EventReference DrillHitResource;
-    public EventReference DrillDestroyResource;
-    public EventReference ItemPickup;
-    public EventReference StoreBuy;
-    public EventReference StoreError;
-    public EventReference StoreTab;
-    public EventReference StoreOpen;
-    public EventReference Footsteps;
-    public EventReference Transition;
-    public EventReference VoiceLines;
-    public EventReference Recharge;
-    
-    
-
-    private void Awake()
+    public class AudioRegistry : MonoBehaviour
     {
-        // Set up the static reference shortcut
-        if (Events != null && Events != this)
+        public static AudioRegistry Events;
+
+
+        [Header("Ambience")]
+        public EventReference WorldAmbience;
+
+        [Header("SFX")]
+        public EventReference DrillDrilling;
+
+        public EventReference DrillHitDirt;
+        public EventReference DrillHitResource;
+        public EventReference DrillDestroyResource;
+        public EventReference ItemPickup;
+        public EventReference StoreBuy;
+        public EventReference StoreError;
+        public EventReference StoreTab;
+        public EventReference StoreOpen;
+        public EventReference Footsteps;
+        public EventReference Transition;
+
+
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            // Set up the static reference shortcut
+            if (Events != null && Events != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            Events = this;
         }
-        Events = this;
     }
 }
-
-
