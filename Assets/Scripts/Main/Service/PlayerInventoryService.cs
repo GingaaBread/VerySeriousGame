@@ -22,6 +22,7 @@ namespace Main.Service
 
         public event Action<ItemSo> OnItemCollected;
         public event Action<ItemSo, int> OnConsumableUpdated;
+        public event Action<int> OnCurrencyUpdated;
 
         public void IncrementCarryLimit()
         {
@@ -36,7 +37,8 @@ namespace Main.Service
 
             if (!_playerInventory.ItemsInInventory.TryAdd(item, amount)) _playerInventory.ItemsInInventory[item]++;
 
-            if (item != _currency) _playerInventory.CurrentInventorySize++;
+            if (item == _currency) OnCurrencyUpdated?.Invoke(_playerInventory.ItemsInInventory[item]);
+            else _playerInventory.CurrentInventorySize++;
 
             if (item.IsConsumable) OnConsumableUpdated?.Invoke(item, _playerInventory.ItemsInInventory[item]);
 
@@ -104,8 +106,12 @@ namespace Main.Service
                 Debug.Log($"Completely removed {item.ItemName} from the inventory");
             }
 
-            if (item != _currency) _playerInventory.CurrentInventorySize -= amount;
+            if (item == _currency)
+                OnCurrencyUpdated?.Invoke(_playerInventory.ItemsInInventory.GetValueOrDefault(item, 0));
+            else _playerInventory.CurrentInventorySize -= amount;
         }
+
+        public int CurrentCurrency() => _playerInventory.ItemsInInventory.GetValueOrDefault(_currency, 0);
 
         public bool InventoryIsFull() =>
             _playerInventory.CurrentInventorySize >= _playerInventory.CurrentInventoryLimit;
