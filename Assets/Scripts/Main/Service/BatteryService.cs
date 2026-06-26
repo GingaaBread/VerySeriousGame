@@ -12,7 +12,7 @@ namespace Main.Service
     [UsedImplicitly]
     public sealed class BatteryService : IStartable, IDisposable
     {
-        private const int MAX_BATTERY_INCREMENT = 25;
+        private const int BATTERY_INCREMENT = 3;
 
         private readonly BatteryStatus _batteryStatus = new();
         [Inject] private readonly DrillActivationMediator _drillActivationMediator;
@@ -74,7 +74,7 @@ namespace Main.Service
 
         public void IncreaseMaxBattery()
         {
-            _batteryStatus.CurrentMaxBatteryLevel += MAX_BATTERY_INCREMENT;
+            _batteryStatus.CurrentMaxBatteryLevel += BATTERY_INCREMENT;
             TriggerAmountUpdate();
             Debug.Log($"Increased the max battery. It is now: {_batteryStatus.CurrentMaxBatteryLevel}");
         }
