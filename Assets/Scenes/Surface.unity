@@ -5191,6 +5191,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890464927}
   m_CullTransparentMesh: 1
+--- !u!1 &2040926219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 876263504198965141, guid: d57471f3f351795419036afe7e47c673, type: 3}
+  m_PrefabInstance: {fileID: 7238748693687467606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2098248205
 GameObject:
   m_ObjectHideFlags: 0
@@ -5435,6 +5440,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8993534210274214071, guid: d57471f3f351795419036afe7e47c673, type: 3}
   m_PrefabInstance: {fileID: 7238748693687467606}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2132532751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040926219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1434917312
+      Data2: 1128281549
+      Data3: -1270556499
+      Data4: -414723774
+    Path: event:/SFX/Funny/Voice_Lines
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &340948889303764372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5841,6 +5877,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Recharge Station
       objectReference: {fileID: 0}
+    - target: {fileID: 3539983413472427255, guid: 2bf29d83fe18b004a881fb2cfb2ac102, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539983413472427255, guid: 2bf29d83fe18b004a881fb2cfb2ac102, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539983413472427255, guid: 2bf29d83fe18b004a881fb2cfb2ac102, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2755956959983624662, guid: 5652bf59feb144a418eaf7bafeb1ffd4, type: 3}
+    - target: {fileID: 3539983413472427255, guid: 2bf29d83fe18b004a881fb2cfb2ac102, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539983413472427255, guid: 2bf29d83fe18b004a881fb2cfb2ac102, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayRecharge
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539983413472427255, guid: 2bf29d83fe18b004a881fb2cfb2ac102, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlaySoundOnTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539983413472427255, guid: 2bf29d83fe18b004a881fb2cfb2ac102, type: 3}
+      propertyPath: <OnInteractionTriggered>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6014,7 +6078,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 876263504198965141, guid: d57471f3f351795419036afe7e47c673, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2132532751}
   m_SourcePrefab: {fileID: 100100000, guid: d57471f3f351795419036afe7e47c673, type: 3}
 --- !u!1001 &7693707277447938279
 PrefabInstance:

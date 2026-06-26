@@ -8,4 +8,9 @@ public class PlaySoundOnTrigger : MonoBehaviour
     {
         AudioManager.Instance.PlayOneShot(AudioRegistry.Events.Transition);
     }
+
+    public void PlayRecharge()
+    {
+        AudioManager.Instance.PlayOneShot(AudioRegistry.Events.Recharge);
+    }
 }

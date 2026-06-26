@@ -24,6 +24,8 @@ namespace Audio
         public EventReference StoreOpen;
         public EventReference Footsteps;
         public EventReference Transition;
+        public EventReference Recharge;
+        public EventReference VoiceLines;
 
 
         private void Awake()
