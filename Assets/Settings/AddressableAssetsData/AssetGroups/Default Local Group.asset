@@ -38,6 +38,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - transition
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60a52fcd46e79eb4aba2eee697651244
+    m_Address: Assets/AddressableAssets/Transitions/transition.teleport.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - transition
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 64dfd541114f1f5408151a1d1de0629e
     m_Address: Assets/AddressableAssets/Transitions/transition.surface_to_mine.asset
     m_ReadOnly: 0

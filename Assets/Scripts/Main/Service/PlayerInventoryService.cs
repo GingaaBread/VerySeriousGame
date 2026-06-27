@@ -44,9 +44,12 @@ namespace Main.Service
             if (!_playerInventory.ItemsInInventory.TryAdd(item, amount))
                 _playerInventory.ItemsInInventory[item] += amount;
 
+            Debug.Log($"Now the player has {_playerInventory.ItemsInInventory[item]}x {item.ItemName}");
+
             if (item == _currency)
             {
                 OnCurrencyUpdated?.Invoke(_playerInventory.ItemsInInventory[item]);
+                Debug.Log("Updating currency");
             }
             else
             {
@@ -58,15 +61,18 @@ namespace Main.Service
             if (item.IsConsumable) OnConsumableUpdated?.Invoke(item, _playerInventory.ItemsInInventory[item]);
 
             OnItemCollected?.Invoke(item);
-            Debug.Log($"Collected {amount}x {item.ItemName}");
         }
 
-        public int MaximumOfRequired(ItemSo item, int required)
+        public int MaximumOfRequired(ItemSo item, int requiredAmount)
         {
-            if (required > 0)
-                return _playerInventory.ItemsInInventory.TryGetValue(item, out var value)
-                    ? Mathf.Min(required, value)
+            if (requiredAmount > 0)
+            {
+                var max = _playerInventory.ItemsInInventory.TryGetValue(item, out var amountInInventory)
+                    ? Mathf.Min(requiredAmount, amountInInventory)
                     : 0;
+
+                Debug.Log($"Calculated the maximum: {max} for amount of {item.ItemName} and required {requiredAmount}");
+            }
 
             Debug.LogError("Can only require positive amounts");
             return 0;

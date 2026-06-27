@@ -162,7 +162,12 @@ namespace Main.View.Shop
             _purchaseButton.SetActive(false);
             _sellButton.SetActive(false);
 
-            if (_currentlySelectedUpgrade == null) return;
+            Debug.Log($"Selected {soldItem.Item.ItemName} in the shopkeeper stock (sold item)");
+
+            if (_currentlySelectedItem == null) return;
+
+            Debug.Log("There is a selected one, so proceeding with the request");
+            Debug.Log($"Checking if {soldItem.Cost} can be removed");
 
             if (_playerInventoryService.InventoryIsFull())
             {
@@ -178,8 +183,11 @@ namespace Main.View.Shop
             }
             else
             {
+                Debug.Log(
+                    "The 'CanRemove' check failed, so the buy button is hidden. Also rendering which resources failed");
                 foreach (var (item, requiredAmount) in soldItem.Cost)
                 {
+                    Debug.Log($"Trying to get the max of {item} and {requiredAmount}");
                     var maxAvailable = _playerInventoryService.MaximumOfRequired(item, requiredAmount);
                     if (maxAvailable >= requiredAmount) continue;
                     Debug.Log($"Required {requiredAmount} of {item.ItemName} but only has {maxAvailable} available");
