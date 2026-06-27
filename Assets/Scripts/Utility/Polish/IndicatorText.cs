@@ -20,7 +20,7 @@ namespace Utility.Polish
 
         public void MarkCompletion()
         {
-            LeanPool.Despawn(gameObject);
+            LeanPool.Despawn(this);
         }
     }
 }

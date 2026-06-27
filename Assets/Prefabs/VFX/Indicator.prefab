@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1811186719688010614}
   - component: {fileID: 1603361311150352066}
-  - component: {fileID: 1843075765971534075}
+  - component: {fileID: 4407461540903161295}
   m_Layer: 5
   m_Name: Indiciator Container
   m_TagString: Untagged
@@ -60,7 +60,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1843075765971534075
+--- !u!114 &4407461540903161295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,12 +69,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 4382647333675015955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c06cfcc194f47bebe69dbfa6f1f8b43, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ef2007063d9461a8b8a5502ddfe6e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1603361311150352066}
-  _text: {fileID: 8204053008951953674}
-  _rectTransform: {fileID: 1811186719688010614}
+  _onMark:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5411399673698526088}
+        m_TargetAssemblyTypeName: Utility.Polish.IndicatorText, Assembly-CSharp
+        m_MethodName: MarkCompletion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8092370699392636475
 GameObject:
   m_ObjectHideFlags: 0
