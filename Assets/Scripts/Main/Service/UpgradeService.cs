@@ -86,6 +86,6 @@ namespace Main.Service
             return all.ToArray();
         }
 
-        public int UpgradeCountOf(UpgradeSo upgrade) => _upgradeStatus.PurchasedUpgrades[upgrade];
+        public int UpgradeCountOf(UpgradeSo upgrade) => _upgradeStatus.PurchasedUpgrades.GetValueOrDefault(upgrade, 0);
     }
 }
