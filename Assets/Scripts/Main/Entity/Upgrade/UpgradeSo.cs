@@ -13,6 +13,9 @@ namespace Main.Entity.Upgrade
         [field: TextArea]
         public string Description { get; private set; }
 
+
+        [field: SerializeField] public int UpgradeIncreaseCost { get; private set; } = 1;
+
         [field: Required]
         [field: SerializeField]
         [field: ShowAssetPreview]

@@ -75,6 +75,7 @@ namespace Main.Service
         public void IncreaseMaxBattery()
         {
             _batteryStatus.CurrentMaxBatteryLevel += BATTERY_INCREMENT;
+            RechargeCompletely();
             TriggerAmountUpdate();
             Debug.Log($"Increased the max battery. It is now: {_batteryStatus.CurrentMaxBatteryLevel}");
         }
@@ -82,6 +83,7 @@ namespace Main.Service
         public void IncreaseBatteryDepletionInterval()
         {
             _batteryStatus.CurrentDepletionInterval++;
+            RechargeCompletely();
             Debug.Log(
                 $"Increased the battery depletion interval. It is now: {_batteryStatus.CurrentDepletionInterval}");
         }

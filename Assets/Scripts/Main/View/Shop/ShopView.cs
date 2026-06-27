@@ -103,12 +103,14 @@ namespace Main.View.Shop
             {
                 foreach (var (item, requiredAmount) in upgrade.Cost)
                 {
-                    var maxAvailable = _playerInventoryService.MaximumOfRequired(item, requiredAmount);
-                    if (maxAvailable >= requiredAmount) continue;
+                    var totalAmount = requiredAmount +
+                                      upgrade.UpgradeIncreaseCost * _upgradeService.UpgradeCountOf(upgrade);
+                    var maxAvailable = _playerInventoryService.MaximumOfRequired(item, totalAmount);
+                    if (maxAvailable >= totalAmount) continue;
 
                     var instance =
                         LeanPool.Spawn(_requiredResourcePrefab, _requiredResourceTransform);
-                    instance.Render(item.ItemSprite, maxAvailable + "/" + requiredAmount, Color.red);
+                    instance.Render(item.ItemSprite, maxAvailable + "/" + totalAmount, Color.red);
                     _detailResourceInstances.Add(instance);
                 }
 
@@ -144,6 +146,7 @@ namespace Main.View.Shop
         {
             if (_currentlySelectedItem != soldItem)
                 AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreTab);
+
             _currentlySelectedItem = _shopkeeperStock.SoldItems.FirstOrDefault(e => e == soldItem);
             _detailResourceInstances.ForEach(i => LeanPool.Despawn(i));
             _detailResourceInstances.Clear();
@@ -170,6 +173,7 @@ namespace Main.View.Shop
                 {
                     var maxAvailable = _playerInventoryService.MaximumOfRequired(item, requiredAmount);
                     if (maxAvailable >= requiredAmount) continue;
+                    Debug.Log($"Required {requiredAmount} of {item.ItemName} but only has {maxAvailable} available");
 
                     var instance =
                         LeanPool.Spawn(_requiredResourcePrefab, _requiredResourceTransform);
@@ -222,7 +226,7 @@ namespace Main.View.Shop
             {
                 var instance = LeanPool.Spawn(_shopButtonPrefab, _scrollViewContent);
                 _shopButtonInstances.Add(instance);
-                instance.Render(this, upgradeSo, upgradeSo.Cost);
+                instance.Render(this, upgradeSo, upgradeSo.Cost, _upgradeService);
                 LayoutRebuilder.ForceRebuildLayoutImmediate(_scrollViewContent as RectTransform);
             }
 
@@ -246,7 +250,7 @@ namespace Main.View.Shop
                 LayoutRebuilder.ForceRebuildLayoutImmediate(_scrollViewContent as RectTransform);
             }
 
-            if (_upgrades.Count is not 0) Select(_shopkeeperStock.SoldItems[0]);
+            if (_shopkeeperStock.SoldItems.Length is not 0) Select(_shopkeeperStock.SoldItems[0]);
         }
 
         public void Close()

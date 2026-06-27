@@ -7,7 +7,7 @@ namespace Main.Service
     [UsedImplicitly]
     public sealed class PlayerStatService
     {
-        private const int MIN_BURST_INTERVAL = 0;
+        private const float MIN_BURST_INTERVAL = 0.3f;
         private const float BURST_DECAY_RATE = 0.2f; // 20%
         private readonly PlayerStats _playerStats = new();
 

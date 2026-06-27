@@ -85,5 +85,7 @@ namespace Main.Service
             var all = _upgradeStatus.UpgradePool;
             return all.ToArray();
         }
+
+        public int UpgradeCountOf(UpgradeSo upgrade) => _upgradeStatus.PurchasedUpgrades[upgrade];
     }
 }

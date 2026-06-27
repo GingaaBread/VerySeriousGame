@@ -41,7 +41,8 @@ namespace Main.Service
             if (InventoryIsFull())
                 Debug.LogWarning("Should not try to collect an item if the inventory is full. Check first!");
 
-            if (!_playerInventory.ItemsInInventory.TryAdd(item, amount)) _playerInventory.ItemsInInventory[item]++;
+            if (!_playerInventory.ItemsInInventory.TryAdd(item, amount))
+                _playerInventory.ItemsInInventory[item] += amount;
 
             if (item == _currency)
             {
@@ -49,7 +50,7 @@ namespace Main.Service
             }
             else
             {
-                _playerInventory.CurrentInventorySize++;
+                _playerInventory.CurrentInventorySize += amount;
                 OnInventoryCapUpdated?.Invoke(_playerInventory.CurrentInventorySize,
                     _playerInventory.CurrentInventoryLimit);
             }
@@ -57,18 +58,18 @@ namespace Main.Service
             if (item.IsConsumable) OnConsumableUpdated?.Invoke(item, _playerInventory.ItemsInInventory[item]);
 
             OnItemCollected?.Invoke(item);
-            Debug.Log($"Collected 1x {item.ItemName}");
+            Debug.Log($"Collected {amount}x {item.ItemName}");
         }
 
         public int MaximumOfRequired(ItemSo item, int required)
         {
-            if (required >= 0)
-                return !_playerInventory.ItemsInInventory.ContainsKey(item)
-                    ? 0
-                    : Mathf.Min(required, _playerInventory.ItemsInInventory[item]);
+            if (required > 0)
+                return _playerInventory.ItemsInInventory.TryGetValue(item, out var value)
+                    ? Mathf.Min(required, value)
+                    : 0;
 
             Debug.LogError("Can only require positive amounts");
-            return -1;
+            return 0;
         }
 
         public bool CanRemove(Dictionary<ItemSo, int> items)
@@ -146,6 +147,7 @@ namespace Main.Service
         {
             if (!_playerInventory.ItemsInInventory.ContainsKey(item)) return;
             var amount = _playerInventory.ItemsInInventory[item];
+            Debug.Log($"Trying to sell all of {item.ItemName}. There are {amount}");
             var total = amount * item.MoneyWorth;
             Remove(item, amount);
             Collect(_currency, total);

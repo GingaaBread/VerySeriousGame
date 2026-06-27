@@ -2,6 +2,7 @@
 using Lean.Pool;
 using Main.Entity;
 using Main.Entity.Upgrade;
+using Main.Service;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -67,19 +68,21 @@ namespace Main.View.Shop
             _requiredResourceViews.Add(instance);
         }
 
-        public void Render(ShopView callback, UpgradeSo upgradeSo, Dictionary<ItemSo, int> cost)
+        public void Render(ShopView callback, UpgradeSo upgrade, Dictionary<ItemSo, int> cost,
+            UpgradeService upgradeService)
         {
             ResetAll();
-            _renderedUpgrade = upgradeSo;
+            _renderedUpgrade = upgrade;
             _callback = callback;
 
-            _iconImage.sprite = upgradeSo.Icon;
+            _iconImage.sprite = upgrade.Icon;
             DespawnAll();
 
             foreach (var (item, amount) in cost)
             {
                 var instance = LeanPool.Spawn(_requiredResourcePrefab, _resourceContainer);
-                instance.Render(item.ItemSprite, amount + string.Empty, Color.white);
+                var totalAmount = amount + upgradeService.UpgradeCountOf(upgrade) * upgrade.UpgradeIncreaseCost;
+                instance.Render(item.ItemSprite, totalAmount + string.Empty, Color.white);
                 _requiredResourceViews.Add(instance);
             }
         }
