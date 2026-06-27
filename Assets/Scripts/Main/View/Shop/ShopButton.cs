@@ -11,6 +11,8 @@ namespace Main.View.Shop
 {
     public class ShopButton : MonoBehaviour
     {
+        private const float DEFAULT_ALPHA = 1f;
+        private const float NOT_AFFORDABLE_ALPHA = .15f;
         [Required] [SerializeField] private Image _iconImage;
         [Required] [SerializeField] private Image _borderImage;
         [Required] [SerializeField] private RequiredResourceView _requiredResourcePrefab;
@@ -51,6 +53,13 @@ namespace Main.View.Shop
                 .setIgnoreTimeScale(true);
         }
 
+        private void RenderAlpha(bool affordable)
+        {
+            var color = _borderImage.color;
+            color.a = affordable ? DEFAULT_ALPHA : NOT_AFFORDABLE_ALPHA;
+            _borderImage.color = color;
+        }
+
         public void Render(ShopView callback, ItemSo itemToSell, int sellAmount, ItemSo givenItem, int givenAmount)
         {
             ResetAll();
@@ -69,9 +78,10 @@ namespace Main.View.Shop
         }
 
         public void Render(ShopView callback, UpgradeSo upgrade, Dictionary<ItemSo, int> cost,
-            UpgradeService upgradeService)
+            UpgradeService upgradeService, bool affordable)
         {
             ResetAll();
+            RenderAlpha(affordable);
             _renderedUpgrade = upgrade;
             _callback = callback;
 
@@ -87,9 +97,11 @@ namespace Main.View.Shop
             }
         }
 
-        public void Render(ShopView callback, ShopkeeperStock.SoldItem soldItem)
+        public void Render(ShopView callback, ShopkeeperStock.SoldItem soldItem, bool affordable)
         {
             ResetAll();
+            RenderAlpha(affordable);
+
             _renderedSoldItem = soldItem;
             _callback = callback;
 

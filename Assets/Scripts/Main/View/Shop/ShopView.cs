@@ -63,7 +63,7 @@ namespace Main.View.Shop
                 _playerInventoryService.Remove(_currentlySelectedItem.Cost);
             }
 
-            Select(_currentlySelectedItem); // <- could be unavailable  now
+            RenderSoldItems(); // <- could be unavailable  now
         }
 
         public void TryPurchaseCurrent()
@@ -82,6 +82,15 @@ namespace Main.View.Shop
             RenderSell(); // <- is unavailable for purchase now
         }
 
+        private Dictionary<ItemSo, int> TotalCost(UpgradeSo upgrade)
+        {
+            return upgrade.Cost.ToDictionary(
+                item => item.Key,
+                amount =>
+                    amount.Value + upgrade.UpgradeIncreaseCost * _upgradeService.UpgradeCountOf(upgrade)
+            );
+        }
+
         public void Select(UpgradeSo upgrade)
         {
             if (_currentlySelectedUpgrade != upgrade)
@@ -95,11 +104,7 @@ namespace Main.View.Shop
 
             if (_currentlySelectedUpgrade == null) return;
 
-            var totalCost = upgrade.Cost.ToDictionary(
-                item => item.Key,
-                amount =>
-                    amount.Value + upgrade.UpgradeIncreaseCost * _upgradeService.UpgradeCountOf(upgrade)
-            );
+            var totalCost = TotalCost(upgrade);
 
             if (_playerInventoryService.CanRemove(totalCost))
             {
@@ -230,7 +235,8 @@ namespace Main.View.Shop
             {
                 var instance = LeanPool.Spawn(_shopButtonPrefab, _scrollViewContent);
                 _shopButtonInstances.Add(instance);
-                instance.Render(this, upgradeSo, upgradeSo.Cost, _upgradeService);
+                instance.Render(this, upgradeSo, upgradeSo.Cost, _upgradeService,
+                    _playerInventoryService.CanRemove(TotalCost(upgradeSo)));
                 LayoutRebuilder.ForceRebuildLayoutImmediate(_scrollViewContent as RectTransform);
             }
 
@@ -250,7 +256,7 @@ namespace Main.View.Shop
             {
                 var instance = LeanPool.Spawn(_shopButtonPrefab, _scrollViewContent);
                 _shopButtonInstances.Add(instance);
-                instance.Render(this, item);
+                instance.Render(this, item, _playerInventoryService.CanRemove(item.Cost));
                 LayoutRebuilder.ForceRebuildLayoutImmediate(_scrollViewContent as RectTransform);
             }
 

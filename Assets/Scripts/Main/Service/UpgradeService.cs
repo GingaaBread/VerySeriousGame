@@ -28,7 +28,13 @@ namespace Main.Service
 
         public void Purchase(UpgradeSo upgrade)
         {
-            if (!_playerInventoryService.CanRemove(upgrade.Cost))
+            var totalCost = upgrade.Cost.ToDictionary(
+                item => item.Key,
+                amount =>
+                    amount.Value + upgrade.UpgradeIncreaseCost * UpgradeCountOf(upgrade)
+            );
+
+            if (!_playerInventoryService.CanRemove(totalCost))
             {
                 Debug.Log("Ignoring the purchase request because the cost cannot be afforded");
                 return;
@@ -36,7 +42,7 @@ namespace Main.Service
 
             if (!_upgradeStatus.PurchasedUpgrades.TryAdd(upgrade, 1)) _upgradeStatus.PurchasedUpgrades[upgrade]++;
 
-            _playerInventoryService.Remove(upgrade.Cost);
+            _playerInventoryService.Remove(totalCost);
             foreach (var upgradeEffect in upgrade.Effects)
             {
                 ApplyUpgrade(upgradeEffect);
