@@ -72,7 +72,7 @@ namespace Main.View.Shop
             _upgradeService.Purchase(_currentlySelectedUpgrade);
 
             AudioManager.Instance.PlayOneShot(AudioRegistry.Events.StoreBuy);
-            Select(_currentlySelectedUpgrade); // <- could be unavailable for purchase now
+            RenderUpgrades(); // <- could be unavailable for purchase now
         }
 
         public void TrySellCurrent()
@@ -95,16 +95,20 @@ namespace Main.View.Shop
 
             if (_currentlySelectedUpgrade == null) return;
 
-            if (_playerInventoryService.CanRemove(upgrade.Cost))
+            var totalCost = upgrade.Cost.ToDictionary(
+                item => item.Key,
+                amount =>
+                    amount.Value + upgrade.UpgradeIncreaseCost * _upgradeService.UpgradeCountOf(upgrade)
+            );
+
+            if (_playerInventoryService.CanRemove(totalCost))
             {
                 _purchaseButton.SetActive(true);
             }
             else
             {
-                foreach (var (item, requiredAmount) in upgrade.Cost)
+                foreach (var (item, totalAmount) in totalCost)
                 {
-                    var totalAmount = requiredAmount +
-                                      upgrade.UpgradeIncreaseCost * _upgradeService.UpgradeCountOf(upgrade);
                     var maxAvailable = _playerInventoryService.MaximumOfRequired(item, totalAmount);
                     if (maxAvailable >= totalAmount) continue;
 

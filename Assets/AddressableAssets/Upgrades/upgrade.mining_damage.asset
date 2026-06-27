@@ -15,6 +15,7 @@ MonoBehaviour:
   <UpgradeName>k__BackingField: Sharpness
   <Description>k__BackingField: Increases the <color=#A7605D>damage</color> your
     <color=#A7605D>drill</color><sprite=1> deals to objects.
+  <UpgradeIncreaseCost>k__BackingField: 2
   <Icon>k__BackingField: {fileID: 21300000, guid: e7daa2ab033290e44aa424d39d3e69ca, type: 3}
   <Cost>k__BackingField:
     _serializedList:
