@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: b87eb5d071ab3714da4653ec479f3c41, type: 2}
     - target: {fileID: 8223857210592889644, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
       propertyPath: _sturdiness
-      value: 14
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8446349109177293608, guid: 68aa02a71394a044bac5a9efa8ca038c, type: 3}
       propertyPath: <Identifier>k__BackingField
