@@ -167,7 +167,6 @@ namespace Main.View.Shop
             if (_currentlySelectedItem == null) return;
 
             Debug.Log("There is a selected one, so proceeding with the request");
-            Debug.Log($"Checking if {soldItem.Cost} can be removed");
 
             if (_playerInventoryService.InventoryIsFull())
             {

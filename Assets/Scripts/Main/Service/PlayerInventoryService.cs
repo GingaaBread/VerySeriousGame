@@ -65,13 +65,14 @@ namespace Main.Service
 
         public int MaximumOfRequired(ItemSo item, int requiredAmount)
         {
-            if (requiredAmount > 0)
+            if (requiredAmount >= 0)
             {
                 var max = _playerInventory.ItemsInInventory.TryGetValue(item, out var amountInInventory)
                     ? Mathf.Min(requiredAmount, amountInInventory)
                     : 0;
 
                 Debug.Log($"Calculated the maximum: {max} for amount of {item.ItemName} and required {requiredAmount}");
+                return max;
             }
 
             Debug.LogError("Can only require positive amounts");
@@ -82,6 +83,7 @@ namespace Main.Service
         {
             foreach (var (item, amount) in items)
             {
+                Debug.Log($"Checking if {item.ItemName} exists at least {amount} times");
                 if (!CanRemove(item, amount)) return false;
             }
 
@@ -90,12 +92,27 @@ namespace Main.Service
 
         public bool CanRemove(ItemSo item, int amount)
         {
-            if (amount is 0) return true;
+            if (amount is 0)
+            {
+                Debug.Log($"Can remove {item.ItemName} because the amount is 0 and therefore immediately passed");
+                return true;
+            }
 
-            if (amount < 0) return false;
+            if (amount < 0)
+            {
+                Debug.Log($"Cannot remove {item.ItemName} because the required amount {amount} is < 0");
+                return false;
+            }
 
-            return _playerInventory.ItemsInInventory.TryGetValue(item, out var currentAmount)
-                   && currentAmount >= amount;
+            var exists = _playerInventory.ItemsInInventory.TryGetValue(item, out var currentAmount);
+            Debug.Log($"Does {item.ItemName} exist in the inventory? -> {exists}. It has {currentAmount}");
+
+            var has = currentAmount >= amount;
+            Debug.Log($"currentAmount {currentAmount} >= amount {amount}? -> {has}");
+
+            var both = exists && has;
+            Debug.Log($"Now both. It exists in the inventory and the player has enough of it? -> {both}");
+            return both;
         }
 
         public void Remove(Dictionary<ItemSo, int> items)
@@ -108,6 +125,7 @@ namespace Main.Service
 
         public void Remove(ItemSo item, int amount)
         {
+            Debug.Log($"Remove called!\n{Environment.StackTrace}");
             if (!_playerInventory.ItemsInInventory.ContainsKey(item))
             {
                 Debug.LogError(
@@ -116,6 +134,7 @@ namespace Main.Service
             }
 
             _playerInventory.ItemsInInventory[item] -= amount;
+            Debug.Log($"Removed item {amount} times");
             if (item.IsConsumable) OnConsumableUpdated?.Invoke(item, _playerInventory.ItemsInInventory[item]);
 
             var newAmount = _playerInventory.ItemsInInventory[item];

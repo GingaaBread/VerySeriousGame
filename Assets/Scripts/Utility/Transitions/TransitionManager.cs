@@ -14,7 +14,7 @@ namespace Utility.Transitions
 
         private bool _isPlaying;
         private List<(Transition, TransitionEmitter.EmitterEvents)> _priorityQueue = new();
-        private List<Transition> _registeredTransitions;
+        private List<string> _registeredTransitions;
 
         public static TransitionManager Instance { get; private set; }
 
@@ -29,7 +29,8 @@ namespace Utility.Transitions
             if (_registeredTransitions != null)
                 throw new InvalidOperationException("Cannot register transitions multiple times");
 
-            _registeredTransitions = transitions.ToList();
+            _registeredTransitions = transitions.Select(t => t.Id).ToList();
+            Debug.Log($"Registered {_registeredTransitions.Count()} transitions");
         }
 
         public void Receive(Transition transition, TransitionEmitter.EmitterEvents events)
@@ -37,7 +38,7 @@ namespace Utility.Transitions
             if (transition == null)
                 throw new NullReferenceException("Transition cannot be null");
 
-            if (!_registeredTransitions.Contains(transition))
+            if (!_registeredTransitions.Contains(transition.Id))
                 Debug.LogWarning($"Should not use the unregistered transition '{transition}'");
 
             Add(transition, events);
